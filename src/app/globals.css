@@ -14,8 +14,8 @@
   }
 
   body {
-    /* Gradient: #440cae (bright purple) → #200a60 (mid) → #0D0519 (deep tyrian) */
-    background: linear-gradient(135deg, #440cae 0%, #200a60 50%, #0D0519 100%);
+    /* Gradient: #0D0519 dominant, #440cae as a subtle corner accent */
+    background: linear-gradient(135deg, #0D0519 0%, #0D0519 55%, #200a60 80%, #440cae 100%);
     background-attachment: fixed;
     min-height: 100vh;
     color: #F0EAD8;
