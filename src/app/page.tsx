@@ -90,25 +90,28 @@ export default function HomePage() {
                 placeholder="Search organizations, regions, needs..."
                 className="flex-1 bg-transparent px-4 py-3 font-body text-sm text-cream placeholder:text-cream/30 outline-none"
               />
-              <select className="bg-navy border-0 sm:border-l border-t border-gold/20 px-4 py-3 font-body text-sm text-cream/60 outline-none cursor-pointer min-w-[130px]">
+              <select aria-label="Organization type" className="bg-navy border-0 sm:border-l border-t border-gold/20 px-4 py-3 font-body text-sm text-cream/60 outline-none cursor-pointer min-w-[130px]">
                 <option value="">All Types</option>
                 <option value="nonprofit">Nonprofit</option>
                 <option value="church">Church</option>
                 <option value="ministry">Ministry</option>
                 <option value="forprofit">Business</option>
               </select>
-              <select className="bg-navy border-0 sm:border-l border-t border-gold/20 px-4 py-3 font-body text-sm text-cream/60 outline-none cursor-pointer min-w-[130px]">
+              <select aria-label="Region" className="bg-navy border-0 sm:border-l border-t border-gold/20 px-4 py-3 font-body text-sm text-cream/60 outline-none cursor-pointer min-w-[130px]">
                 <option value="">All Regions</option>
                 <option value="north-america">North America</option>
                 <option value="latin-america">Latin America</option>
+                <option value="south-america">South America</option>
                 <option value="africa">Africa</option>
                 <option value="asia">Asia</option>
+                <option value="australia">Australia</option>
                 <option value="europe">Europe</option>
                 <option value="middle-east">Middle East</option>
                 <option value="global">Global</option>
               </select>
-              <select className="bg-navy border-0 sm:border-l border-t border-gold/20 px-4 py-3 font-body text-sm text-cream/60 outline-none cursor-pointer min-w-[130px]">
+              <select aria-label="Need type" className="bg-navy border-0 sm:border-l border-t border-gold/20 px-4 py-3 font-body text-sm text-cream/60 outline-none cursor-pointer min-w-[130px]">
                 <option value="">All Needs</option>
+                <option value="resource coordination">Resource Coordination</option>
                 <option value="hiring">Hiring</option>
                 <option value="volunteers">Volunteers</option>
                 <option value="donors">Donors</option>

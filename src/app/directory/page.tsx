@@ -11,11 +11,13 @@ const regionOptions = [
   "All Regions",
   "North America",
   "Latin America",
+  "South America",
   "East Africa",
   "West Africa",
   "Southeast Asia",
   "Middle East",
   "Europe",
+  "Australia",
   "Global",
 ];
 
@@ -96,8 +98,9 @@ export default function DirectoryPage() {
 
               {/* Region */}
               <div>
-                <label className="section-label block mb-2">Region</label>
+                <label htmlFor="filter-region" className="section-label block mb-2">Region</label>
                 <select
+                  id="filter-region"
                   value={region}
                   onChange={(e) => setRegion(e.target.value)}
                   className="w-full bg-navy-light border border-gold/20 px-3 py-2.5 font-body text-sm text-cream/70 outline-none focus:border-gold/50 transition-colors"
@@ -110,8 +113,9 @@ export default function DirectoryPage() {
 
               {/* Type */}
               <div>
-                <label className="section-label block mb-2">Organization Type</label>
+                <label htmlFor="filter-type" className="section-label block mb-2">Organization Type</label>
                 <select
+                  id="filter-type"
                   value={type}
                   onChange={(e) => setType(e.target.value as OrgType | "")}
                   className="w-full bg-navy-light border border-gold/20 px-3 py-2.5 font-body text-sm text-cream/70 outline-none focus:border-gold/50 transition-colors"
@@ -124,8 +128,9 @@ export default function DirectoryPage() {
 
               {/* Category */}
               <div>
-                <label className="section-label block mb-2">Category</label>
+                <label htmlFor="filter-category" className="section-label block mb-2">Category</label>
                 <select
+                  id="filter-category"
                   value={category}
                   onChange={(e) => setCategory(e.target.value as OrgCategory | "")}
                   className="w-full bg-navy-light border border-gold/20 px-3 py-2.5 font-body text-sm text-cream/70 outline-none focus:border-gold/50 transition-colors"
@@ -176,6 +181,7 @@ export default function DirectoryPage() {
 
               {/* Reset */}
               <button
+                type="button"
                 onClick={() => {
                   setSearch(""); setRegion("All Regions"); setType(""); setCategory("");
                   setHiringOnly(false); setVolunteersOnly(false); setVerifiedOnly(false);
@@ -206,6 +212,7 @@ export default function DirectoryPage() {
                   <p className="font-body text-sm text-cream/30">
                     Try adjusting your filters or{" "}
                     <button
+                      type="button"
                       onClick={() => {
                         setSearch(""); setRegion("All Regions"); setType(""); setCategory("");
                         setHiringOnly(false); setVolunteersOnly(false); setVerifiedOnly(false);

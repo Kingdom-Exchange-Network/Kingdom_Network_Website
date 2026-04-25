@@ -64,12 +64,14 @@ export default function ApplyPage() {
                   <option value="">Select region...</option>
                   <option>North America</option>
                   <option>Latin America</option>
+                  <option>South America</option>
                   <option>East Africa</option>
                   <option>West Africa</option>
                   <option>Southeast Asia</option>
                   <option>South Asia</option>
                   <option>Middle East</option>
                   <option>Europe</option>
+                  <option>Australia</option>
                   <option>Global</option>
                 </select>
               </div>
