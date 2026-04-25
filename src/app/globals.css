@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 :root {
-  /* Option 1 active: Deep Tyrian Purple */
-  --background: #0D0519;
-  /* Option 2 (Royal Amethyst): --background: #12082A; */
-  /* Original navy:              --background: #0A0D1A; */
+  /* Option 2 active: Royal Amethyst */
+  --background: #12082A;
+  /* Option 1 (Deep Tyrian Purple): --background: #0D0519; */
+  /* Original navy:                 --background: #0A0D1A; */
   --foreground: #F0EAD8;
 }
 
@@ -16,7 +16,7 @@
   }
 
   body {
-    background-color: #0D0519; /* Option 2: #12082A | Original navy: #0A0D1A */
+    background-color: #12082A; /* Option 1: #0D0519 | Original navy: #0A0D1A */
     color: #F0EAD8;
     font-family: var(--font-jost), system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -32,7 +32,7 @@
     width: 4px;
   }
   ::-webkit-scrollbar-track {
-    background: #080210; /* Option 2: #0C051E | Original navy: #070912 */
+    background: #0C051E; /* Option 1: #080210 | Original navy: #070912 */
   }
   ::-webkit-scrollbar-thumb {
     background: #D4AF5A40;
