@@ -38,10 +38,10 @@ export default function ApplyPage() {
                 />
               </div>
               <div>
-                <label className="section-label block mb-2">
+                <label htmlFor="apply-type" className="section-label block mb-2">
                   Organization Type *
                 </label>
-                <select className="w-full bg-navy border border-gold/20 px-3 py-2.5 font-body text-sm text-cream/70 outline-none focus:border-gold/50 transition-colors">
+                <select id="apply-type" className="w-full bg-navy border border-gold/20 px-3 py-2.5 font-body text-sm text-cream/70 outline-none focus:border-gold/50 transition-colors">
                   <option value="">Select type...</option>
                   <option value="nonprofit">Nonprofit / 501(c)(3)</option>
                   <option value="church">
@@ -70,10 +70,10 @@ export default function ApplyPage() {
                 />
               </div>
               <div>
-                <label className="section-label block mb-2">
+                <label htmlFor="apply-region" className="section-label block mb-2">
                   Primary Region *
                 </label>
-                <select className="w-full bg-navy border border-gold/20 px-3 py-2.5 font-body text-sm text-cream/70 outline-none focus:border-gold/50 transition-colors">
+                <select id="apply-region" className="w-full bg-navy border border-gold/20 px-3 py-2.5 font-body text-sm text-cream/70 outline-none focus:border-gold/50 transition-colors">
                   <option value="">Select region...</option>
                   <option>North America</option>
                   <option>Latin America</option>

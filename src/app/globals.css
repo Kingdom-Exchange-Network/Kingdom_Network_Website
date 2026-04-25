@@ -81,6 +81,13 @@
     text-wrap: balance;
   }
 
+  .hero-grid-overlay {
+    background-image:
+      linear-gradient(rgba(212, 175, 90, 1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(212, 175, 90, 1) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
   .border-gold-thin {
     border: 0.5px solid rgba(212, 175, 90, 0.25);
   }
