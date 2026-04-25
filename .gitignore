@@ -14,6 +14,11 @@ out/
 *.tsbuildinfo
 next-env.d.ts
 
+# IDE / tool config (local only)
+.claude/
+.vscode/
+.idea/
+
 # misc
 .DS_Store
 *.pem
