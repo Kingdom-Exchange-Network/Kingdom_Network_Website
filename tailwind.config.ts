@@ -9,19 +9,19 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // ── Option 2 active: Royal Amethyst ─────────────────────────
+        // ── Option 1 active: Deep Tyrian Purple ─────────────────────
         navy: {
-          DEFAULT: "#12082A",
-          dark:    "#0C051E",
-          light:   "#1C1040",
-          border:  "#261455",
+          DEFAULT: "#0D0519",
+          dark:    "#080210",
+          light:   "#160B2B",
+          border:  "#1F1040",
         },
-        // ── Option 1 (swap in to try Deep Tyrian Purple) ────────────
+        // ── Option 2 (Royal Amethyst — too similar, revisit later) ──
         // navy: {
-        //   DEFAULT: "#0D0519",
-        //   dark:    "#080210",
-        //   light:   "#160B2B",
-        //   border:  "#1F1040",
+        //   DEFAULT: "#12082A",
+        //   dark:    "#0C051E",
+        //   light:   "#1C1040",
+        //   border:  "#261455",
         // },
         // ── Original navy (keep for reference) ──────────────────────
         // navy: {
