@@ -3,12 +3,16 @@
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&amp;family=Jost:wght@300;400&amp;display=swap');
     </style>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#440cae"/>
+      <stop offset="50%" stop-color="#200a60"/>
+      <stop offset="100%" stop-color="#0D0519"/>
+    </linearGradient>
   </defs>
 
-  <!-- Dark purple background -->
-  <rect width="500" height="80" fill="#0D0519"/>
+  <rect width="500" height="80" fill="url(#bg)"/>
 
-  <!-- Crown icon: scaled 1.75x from 40x32 source, centered vertically in 80px -->
+  <!-- Crown icon: scaled 1.75x, centered vertically in 80px -->
   <g transform="translate(16, 12) scale(1.75)">
     <rect x="4" y="22" width="32" height="5" rx="1" fill="#D4AF5A"/>
     <path d="M4 22L4 10L12 17L20 4L28 17L36 10L36 22Z" fill="#D4AF5A"/>
@@ -18,7 +22,6 @@
     <rect x="4" y="26.5" width="32" height="0.5" fill="#0D0519" opacity="0.3"/>
   </g>
 
-  <!-- "Kingdom Exchange" — Cormorant Garamond, cream -->
   <text
     x="106"
     y="46"
@@ -29,7 +32,6 @@
     fill="#F0EAD8"
   >Kingdom Exchange</text>
 
-  <!-- "MISSION NETWORK" — Jost, cream at 50% opacity, wide tracking -->
   <text
     x="108"
     y="64"

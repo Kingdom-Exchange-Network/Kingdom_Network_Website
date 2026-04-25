@@ -1,15 +1,16 @@
 <svg width="200" height="160" viewBox="0 0 40 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Kingdom Exchange Mission Network crown logo">
-  <!-- Background -->
-  <rect width="40" height="32" fill="#0D0519"/>
-  <!-- Crown base -->
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#440cae"/>
+      <stop offset="50%" stop-color="#200a60"/>
+      <stop offset="100%" stop-color="#0D0519"/>
+    </linearGradient>
+  </defs>
+  <rect width="40" height="32" fill="url(#bg)"/>
   <rect x="4" y="22" width="32" height="5" rx="1" fill="#D4AF5A"/>
-  <!-- Crown points -->
   <path d="M4 22L4 10L12 17L20 4L28 17L36 10L36 22Z" fill="#D4AF5A"/>
-  <!-- Center jewel -->
   <circle cx="20" cy="13" r="2.5" fill="#0D0519"/>
-  <!-- Side jewels -->
   <circle cx="9" cy="19" r="1.5" fill="#0D0519"/>
   <circle cx="31" cy="19" r="1.5" fill="#0D0519"/>
-  <!-- Bottom trim -->
   <rect x="4" y="26.5" width="32" height="0.5" fill="#0D0519" opacity="0.3"/>
 </svg>

@@ -3,20 +3,21 @@
 @tailwind utilities;
 
 :root {
-  /* Option 1 active: Deep Tyrian Purple */
-  --background: #0D0519;
-  /* Option 2 (Royal Amethyst): --background: #12082A; */
-  /* Original navy:             --background: #0A0D1A; */
+  --background: linear-gradient(135deg, #440cae 0%, #200a60 50%, #0D0519 100%);
   --foreground: #F0EAD8;
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
+    min-height: 100%;
   }
 
   body {
-    background-color: #0D0519; /* Option 2: #12082A | Original navy: #0A0D1A */
+    /* Gradient: #440cae (bright purple) → #200a60 (mid) → #0D0519 (deep tyrian) */
+    background: linear-gradient(135deg, #440cae 0%, #200a60 50%, #0D0519 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
     color: #F0EAD8;
     font-family: var(--font-jost), system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -24,7 +25,7 @@
 
   ::selection {
     background-color: #D4AF5A;
-    color: #0A0D1A;
+    color: #0D0519;
   }
 
   /* Thin gold scrollbar on webkit */
@@ -32,7 +33,7 @@
     width: 4px;
   }
   ::-webkit-scrollbar-track {
-    background: #080210; /* Option 2: #0C051E | Original navy: #070912 */
+    background: #080210;
   }
   ::-webkit-scrollbar-thumb {
     background: #D4AF5A40;
@@ -95,4 +96,22 @@
   .border-gold-thin-hover:hover {
     border-color: rgba(212, 175, 90, 0.5);
   }
+}
+
+/*
+  Unlayered overrides — these beat Tailwind's @layer utilities in the cascade.
+  Section-level bg-navy elements become transparent so the body gradient shows
+  through. Cards (bg-navy-light) and the footer (bg-navy-dark) keep a
+  semi-transparent dark surface for readability.
+*/
+.bg-navy {
+  background-color: transparent;
+}
+
+.bg-navy-light {
+  background-color: rgba(22, 11, 43, 0.80);
+}
+
+.bg-navy-dark {
+  background-color: rgba(8, 2, 16, 0.88);
 }
