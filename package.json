@@ -9,9 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@better-auth/infra": "^0.2.10",
     "@next/font": "^14.2.15",
+    "@types/pg": "^8.20.0",
     "better-auth": "^1.6.11",
     "next": "14.2.35",
+    "pg": "^8.21.0",
     "react": "^18",
     "react-dom": "^18"
   },
