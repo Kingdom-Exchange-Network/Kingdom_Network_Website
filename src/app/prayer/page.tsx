@@ -231,23 +231,28 @@ export default function PrayerPage() {
                     </div>
                     <div>
                       <label className="section-label block mb-1.5">Region (optional)</label>
-                      <select
-                        value={formData.region}
-                        onChange={(e) => setFormData({ ...formData, region: e.target.value })}
-                        className="w-full bg-plum border border-gold/20 px-3 py-2.5 font-body text-sm text-cream/70 outline-none focus:border-gold/50 transition-colors"
-                      >
-                        <option value="">Select region...</option>
-                        <option>North America</option>
-                        <option>Latin America</option>
-                        <option>East Africa</option>
-                        <option>West Africa</option>
-                        <option>North Africa</option>
-                        <option>Southeast Asia</option>
-                        <option>South Asia</option>
-                        <option>Middle East</option>
-                        <option>Europe</option>
-                        <option>Global</option>
-                      </select>
+                      <div className="relative">
+                        <select
+                          value={formData.region}
+                          onChange={(e) => setFormData({ ...formData, region: e.target.value })}
+                          className="w-full appearance-none bg-plum border border-gold/20 px-3 pr-8 py-2.5 font-body text-sm text-cream/70 outline-none focus:border-gold/50 transition-colors"
+                        >
+                          <option value="">Select region...</option>
+                          <option>North America</option>
+                          <option>Latin America</option>
+                          <option>East Africa</option>
+                          <option>West Africa</option>
+                          <option>North Africa</option>
+                          <option>Southeast Asia</option>
+                          <option>South Asia</option>
+                          <option>Middle East</option>
+                          <option>Europe</option>
+                          <option>Global</option>
+                        </select>
+                        <svg aria-hidden="true" className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gold/40" viewBox="0 0 20 20" fill="none">
+                          <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </div>
                     </div>
                     <label className="flex items-center gap-2.5 cursor-pointer">
                       <div

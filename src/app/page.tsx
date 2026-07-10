@@ -83,32 +83,47 @@ export default function HomePage() {
                 placeholder="Search organizations, regions, needs..."
                 className="flex-1 bg-transparent px-4 py-3 font-body text-sm text-cream placeholder:text-cream/30 outline-none"
               />
-              <select aria-label="Organization type" className="bg-plum border-0 sm:border-l border-t border-gold/20 px-4 py-3 font-body text-sm text-cream/60 outline-none cursor-pointer min-w-[130px]">
-                <option value="">All Types</option>
-                <option value="nonprofit">Nonprofit</option>
-                <option value="church">Church</option>
-                <option value="ministry">Ministry</option>
-                <option value="forprofit">Business</option>
-              </select>
-              <select aria-label="Region" className="bg-plum border-0 sm:border-l border-t border-gold/20 px-4 py-3 font-body text-sm text-cream/60 outline-none cursor-pointer min-w-[130px]">
-                <option value="">All Regions</option>
-                <option value="north-america">North America</option>
-                <option value="latin-america">Latin America</option>
-                <option value="south-america">South America</option>
-                <option value="africa">Africa</option>
-                <option value="asia">Asia</option>
-                <option value="australia">Australia</option>
-                <option value="europe">Europe</option>
-                <option value="middle-east">Middle East</option>
-                <option value="global">Global</option>
-              </select>
-              <select aria-label="Need type" className="bg-plum border-0 sm:border-l border-t border-gold/20 px-4 py-3 font-body text-sm text-cream/60 outline-none cursor-pointer min-w-[130px]">
-                <option value="">All Needs</option>
-                <option value="resource coordination">Resource Coordination</option>
-                <option value="hiring">Hiring</option>
-                <option value="volunteers">Volunteers</option>
-                <option value="donors">Donors</option>
-              </select>
+              <div className="relative min-w-[130px]">
+                <select aria-label="Organization type" className="w-full appearance-none bg-plum border-0 sm:border-l border-t border-gold/20 px-4 pr-8 py-3 font-body text-sm text-cream/70 outline-none cursor-pointer">
+                  <option value="">All Types</option>
+                  <option value="nonprofit">Nonprofit</option>
+                  <option value="church">Church</option>
+                  <option value="ministry">Ministry</option>
+                  <option value="forprofit">Business</option>
+                </select>
+                <svg aria-hidden="true" className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gold/40" viewBox="0 0 20 20" fill="none">
+                  <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </div>
+              <div className="relative min-w-[130px]">
+                <select aria-label="Region" className="w-full appearance-none bg-plum border-0 sm:border-l border-t border-gold/20 px-4 pr-8 py-3 font-body text-sm text-cream/70 outline-none cursor-pointer">
+                  <option value="">All Regions</option>
+                  <option value="north-america">North America</option>
+                  <option value="latin-america">Latin America</option>
+                  <option value="south-america">South America</option>
+                  <option value="africa">Africa</option>
+                  <option value="asia">Asia</option>
+                  <option value="australia">Australia</option>
+                  <option value="europe">Europe</option>
+                  <option value="middle-east">Middle East</option>
+                  <option value="global">Global</option>
+                </select>
+                <svg aria-hidden="true" className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gold/40" viewBox="0 0 20 20" fill="none">
+                  <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </div>
+              <div className="relative min-w-[130px]">
+                <select aria-label="Need type" className="w-full appearance-none bg-plum border-0 sm:border-l border-t border-gold/20 px-4 pr-8 py-3 font-body text-sm text-cream/70 outline-none cursor-pointer">
+                  <option value="">All Needs</option>
+                  <option value="resource coordination">Resource Coordination</option>
+                  <option value="hiring">Hiring</option>
+                  <option value="volunteers">Volunteers</option>
+                  <option value="donors">Donors</option>
+                </select>
+                <svg aria-hidden="true" className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gold/40" viewBox="0 0 20 20" fill="none">
+                  <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </div>
               <Link
                 href="/directory"
                 className="btn-primary px-8 whitespace-nowrap text-center flex items-center justify-center"
