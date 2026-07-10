@@ -122,6 +122,7 @@ export default function PrayerPage() {
         body,
         region: formData.region || null,
         anonymous: formData.anonymous,
+        status: "approved",
       });
 
     setSubmitting(false);
@@ -162,7 +163,7 @@ export default function PrayerPage() {
               <div className="bg-navy-light border border-gold/15 p-6 sticky top-24">
                 <h2 className="display-heading text-2xl mb-1">Submit a Request</h2>
                 <p className="font-body text-xs text-cream/40 mb-5 leading-relaxed">
-                  Requests are reviewed before being posted publicly.
+                  Share a prayer need with the network.
                 </p>
 
                 {submitted ? (
@@ -176,8 +177,7 @@ export default function PrayerPage() {
                     </div>
                     <p className="font-display text-xl text-cream mb-2">Request Received</p>
                     <p className="font-body text-xs text-cream/45 leading-relaxed">
-                      Thank you for sharing. We will review your request and post it to the
-                      wall within 24 hours.
+                      Thank you for sharing. Your request has been posted to the wall.
                     </p>
                     <button
                       onClick={() => { setSubmitted(false); setError(null); setFormData({ title: "", body: "", region: "", anonymous: false }); }}

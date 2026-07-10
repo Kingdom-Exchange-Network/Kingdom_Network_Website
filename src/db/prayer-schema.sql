@@ -35,13 +35,14 @@ CREATE POLICY "Anon can read approved prayer requests"
     TO anon
     USING (status = 'approved');
 
--- Anyone may submit a prayer request. The check pins status to 'pending' and
--- prayer_count to 0, so a client cannot self-approve or seed a count.
+-- Anyone may submit a prayer request. Submissions auto-approve and appear on
+-- the wall immediately; the check pins status to 'approved' and prayer_count to
+-- 0, so a client still cannot seed a count.
 CREATE POLICY "Anon can submit prayer requests"
     ON prayer_requests
     FOR INSERT
     TO anon
-    WITH CHECK (status = 'pending' AND prayer_count = 0);
+    WITH CHECK (status = 'approved' AND prayer_count = 0);
 
 -- Anyone may read updates belonging to an approved request.
 CREATE POLICY "Anon can read updates for approved requests"
