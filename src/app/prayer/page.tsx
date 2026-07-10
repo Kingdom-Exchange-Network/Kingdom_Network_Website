@@ -197,6 +197,7 @@ export default function PrayerPage() {
                   month: "short",
                   day: "numeric",
                   year: "numeric",
+                  timeZone: "UTC",
                 });
 
                 return (
