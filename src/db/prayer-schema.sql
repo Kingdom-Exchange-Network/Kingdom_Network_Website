@@ -60,6 +60,14 @@ CREATE POLICY "Anon can read updates for approved requests"
 -- No public UPDATE or DELETE policies are defined, so those actions are denied
 -- to the anon role.
 
+-- Table grants --------------------------------------------------------------
+
+-- RLS policies only filter rows for roles that already hold the underlying
+-- table privilege; without these grants the anon role is denied outright and
+-- the policies above never take effect.
+GRANT INSERT, SELECT ON public.prayer_requests TO anon;
+GRANT SELECT ON public.prayer_updates TO anon;
+
 -- Functions -----------------------------------------------------------------
 
 -- Increment the prayer counter for a single approved request. Runs as the
