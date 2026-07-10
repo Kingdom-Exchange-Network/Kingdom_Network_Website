@@ -91,6 +91,8 @@ export interface Organization {
   description: string;
   shortDescription: string;
   category: OrgCategory[];
+  mountains: Mountain[];
+  subcategories: string[];
   region: string;
   country: string;
   type: OrgType;

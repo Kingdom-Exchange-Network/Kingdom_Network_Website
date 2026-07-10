@@ -8,6 +8,8 @@ export const seedOrganizations: Organization[] = [
     description:
       "Bread of Life International partners with local churches to deliver sustainable food security programs, clean water access, and discipleship training across Kenya, Uganda, and Tanzania. Since 2008, we have served over 40,000 individuals and planted 120 partner churches.",
     category: ["relief", "volunteers"],
+    mountains: ["family", "religion"],
+    subcategories: ["water-food-relief", "discipleship-training"],
     region: "East Africa",
     country: "Kenya",
     type: "nonprofit",
@@ -26,6 +28,8 @@ export const seedOrganizations: Organization[] = [
     description:
       "Harvest Workers Network trains, places, and supports missionaries serving among the world's least-reached people groups. We partner with local churches and denominational networks to ensure missionaries are well-equipped, accountable, and culturally prepared.",
     category: ["missions", "hiring", "education"],
+    mountains: ["religion"],
+    subcategories: ["evangelism-church-planting", "discipleship-training"],
     region: "Global",
     country: "United States",
     type: "nonprofit",
@@ -44,6 +48,8 @@ export const seedOrganizations: Organization[] = [
     description:
       "City Light Church is a multiethnic, multigenerational community located in downtown Atlanta. We are committed to church planting, community development, and raising up the next generation of kingdom leaders. We host weekly community dinners, job training programs, and ESL classes.",
     category: ["church", "volunteers"],
+    mountains: ["religion"],
+    subcategories: ["discipleship-training"],
     region: "Southeast USA",
     country: "United States",
     type: "church",
@@ -62,6 +68,8 @@ export const seedOrganizations: Organization[] = [
     description:
       "Cornerstone Education Initiative develops and operates faith-based schools and adult literacy programs across rural Myanmar, Laos, and Cambodia. Our curriculum integrates academic excellence with biblical discipleship, serving over 3,000 students annually.",
     category: ["education", "volunteers"],
+    mountains: ["education"],
+    subcategories: ["schools-literacy"],
     region: "Southeast Asia",
     country: "Myanmar",
     type: "nonprofit",
@@ -80,6 +88,8 @@ export const seedOrganizations: Organization[] = [
     description:
       "Covenant Legal Group is a network of Christian attorneys providing free legal representation, asylum assistance, and religious freedom advocacy to persecuted believers globally. We believe justice is a kingdom mandate.",
     category: ["relief", "hiring"],
+    mountains: ["government"],
+    subcategories: ["justice-human-rights"],
     region: "Global",
     country: "United States",
     type: "nonprofit",
@@ -98,6 +108,8 @@ export const seedOrganizations: Organization[] = [
     description:
       "Kingdom Marketplace Alliance is a network of Christian business leaders who integrate their faith with their professional influence. We host quarterly gatherings, a mentorship program, and an annual Kingdom Business Summit.",
     category: ["marketplace", "hiring"],
+    mountains: ["economy"],
+    subcategories: ["business-as-mission"],
     region: "North America",
     country: "United States",
     type: "forprofit",
