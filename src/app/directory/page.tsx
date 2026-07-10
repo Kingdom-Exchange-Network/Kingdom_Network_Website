@@ -5,7 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import OrgCard from "@/components/OrgCard";
 import { seedOrganizations } from "@/lib/seed-data";
-import { OrgCategory, OrgType } from "@/lib/types";
+import { OrgType, Mountain, MOUNTAINS } from "@/lib/types";
 
 const regionOptions = [
   "All Regions",
@@ -29,24 +29,17 @@ const typeOptions: { label: string; value: OrgType | "" }[] = [
   { label: "Business", value: "forprofit" },
 ];
 
-const categoryOptions: { label: string; value: OrgCategory | "" }[] = [
-  { label: "All Categories", value: "" },
-  { label: "Relief", value: "relief" },
-  { label: "Missions", value: "missions" },
-  { label: "Education", value: "education" },
-  { label: "Volunteers", value: "volunteers" },
-  { label: "Hiring", value: "hiring" },
-  { label: "Marketplace", value: "marketplace" },
-];
-
 export default function DirectoryPage() {
   const [search, setSearch] = useState("");
   const [region, setRegion] = useState("All Regions");
   const [type, setType] = useState<OrgType | "">("");
-  const [category, setCategory] = useState<OrgCategory | "">("");
+  const [mountain, setMountain] = useState<Mountain | "">("");
+  const [subcategory, setSubcategory] = useState<string>("");
   const [hiringOnly, setHiringOnly] = useState(false);
   const [volunteersOnly, setVolunteersOnly] = useState(false);
   const [verifiedOnly, setVerifiedOnly] = useState(false);
+
+  const activeMountain = MOUNTAINS.find((m) => m.slug === mountain);
 
   const filtered = useMemo(() => {
     return seedOrganizations.filter((org) => {
@@ -54,13 +47,14 @@ export default function DirectoryPage() {
           !org.shortDescription.toLowerCase().includes(search.toLowerCase())) return false;
       if (region !== "All Regions" && org.region !== region) return false;
       if (type && org.type !== type) return false;
-      if (category && !org.category.includes(category)) return false;
+      if (mountain && !org.mountains.includes(mountain)) return false;
+      if (subcategory && !org.subcategories.includes(subcategory)) return false;
       if (hiringOnly && !org.hiring) return false;
       if (volunteersOnly && !org.volunteersNeeded) return false;
       if (verifiedOnly && !org.verified) return false;
       return true;
     });
-  }, [search, region, type, category, hiringOnly, volunteersOnly, verifiedOnly]);
+  }, [search, region, type, mountain, subcategory, hiringOnly, volunteersOnly, verifiedOnly]);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -126,20 +120,42 @@ export default function DirectoryPage() {
                 </select>
               </div>
 
-              {/* Category */}
+              {/* Mountain */}
               <div>
-                <label htmlFor="filter-category" className="section-label block mb-2">Category</label>
+                <label htmlFor="filter-mountain" className="section-label block mb-2">Mountain</label>
                 <select
-                  id="filter-category"
-                  value={category}
-                  onChange={(e) => setCategory(e.target.value as OrgCategory | "")}
+                  id="filter-mountain"
+                  value={mountain}
+                  onChange={(e) => {
+                    setMountain(e.target.value as Mountain | "");
+                    setSubcategory("");
+                  }}
                   className="w-full bg-navy-light border border-gold/20 px-3 py-2.5 font-body text-sm text-cream/70 outline-none focus:border-gold/50 transition-colors"
                 >
-                  {categoryOptions.map((c) => (
-                    <option key={c.value} value={c.value}>{c.label}</option>
+                  <option value="">All Mountains</option>
+                  {MOUNTAINS.map((m) => (
+                    <option key={m.slug} value={m.slug}>{m.label}</option>
                   ))}
                 </select>
               </div>
+
+              {/* Subcategory */}
+              {activeMountain && (
+                <div>
+                  <label htmlFor="filter-subcategory" className="section-label block mb-2">Subcategory</label>
+                  <select
+                    id="filter-subcategory"
+                    value={subcategory}
+                    onChange={(e) => setSubcategory(e.target.value)}
+                    className="w-full bg-navy-light border border-gold/20 px-3 py-2.5 font-body text-sm text-cream/70 outline-none focus:border-gold/50 transition-colors"
+                  >
+                    <option value="">All Subcategories</option>
+                    {activeMountain.subcategories.map((s) => (
+                      <option key={s.slug} value={s.slug}>{s.label}</option>
+                    ))}
+                  </select>
+                </div>
+              )}
 
               {/* Checkboxes */}
               <div>
@@ -183,7 +199,7 @@ export default function DirectoryPage() {
               <button
                 type="button"
                 onClick={() => {
-                  setSearch(""); setRegion("All Regions"); setType(""); setCategory("");
+                  setSearch(""); setRegion("All Regions"); setType(""); setMountain(""); setSubcategory("");
                   setHiringOnly(false); setVolunteersOnly(false); setVerifiedOnly(false);
                 }}
                 className="font-body text-xs text-cream/30 hover:text-gold/60 transition-colors"
@@ -214,7 +230,7 @@ export default function DirectoryPage() {
                     <button
                       type="button"
                       onClick={() => {
-                        setSearch(""); setRegion("All Regions"); setType(""); setCategory("");
+                        setSearch(""); setRegion("All Regions"); setType(""); setMountain(""); setSubcategory("");
                         setHiringOnly(false); setVolunteersOnly(false); setVerifiedOnly(false);
                       }}
                       className="text-gold/50 hover:text-gold transition-colors"
