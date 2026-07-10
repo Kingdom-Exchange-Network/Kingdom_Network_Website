@@ -115,7 +115,7 @@ export default function PrayerPage() {
     setSubmitting(true);
     setError(null);
 
-    const { error: insertError } = await supabase
+    const { data: inserted, error: insertError } = await supabase
       .from("prayer_requests")
       .insert({
         title,
@@ -123,13 +123,32 @@ export default function PrayerPage() {
         region: formData.region || null,
         anonymous: formData.anonymous,
         status: "approved",
-      });
+      })
+      .select()
+      .single();
 
     setSubmitting(false);
 
     if (insertError) {
       setError("Something went wrong submitting your request. Please try again.");
       return;
+    }
+
+    if (inserted) {
+      setRequests((prev) => [
+        {
+          id: inserted.id,
+          title: inserted.title,
+          body: inserted.body,
+          region: inserted.region,
+          orgName: inserted.org_name,
+          anonymous: inserted.anonymous,
+          postedAt: inserted.created_at,
+          prayerCount: inserted.prayer_count,
+          updates: [],
+        },
+        ...prev,
+      ]);
     }
 
     setSubmitted(true);
