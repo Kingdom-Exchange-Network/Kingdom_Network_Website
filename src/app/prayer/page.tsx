@@ -23,6 +23,8 @@ export default function PrayerPage() {
   const [error, setError] = useState<string | null>(null);
   const [requests, setRequests] = useState<PrayerRequest[]>([]);
   const [loading, setLoading] = useState(true);
+  const [prayedIds, setPrayedIds] = useState<Set<string>>(new Set());
+  const [prayingId, setPrayingId] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     title: "",
     body: "",
@@ -58,6 +60,30 @@ export default function PrayerPage() {
 
     fetchRequests();
   }, []);
+
+  async function handlePray(id: string) {
+    if (prayingId === id || prayedIds.has(id)) return;
+
+    setPrayingId(id);
+
+    const { error: rpcError } = await supabase.rpc("increment_prayer_count", {
+      request_id: id,
+    });
+
+    if (rpcError) {
+      console.error("Failed to increment prayer count:", rpcError);
+      setPrayingId(null);
+      return;
+    }
+
+    setRequests((prev) =>
+      prev.map((r) =>
+        r.id === id ? { ...r, prayerCount: r.prayerCount + 1 } : r
+      )
+    );
+    setPrayedIds((prev) => new Set(prev).add(id));
+    setPrayingId(null);
+  }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -251,6 +277,9 @@ export default function PrayerPage() {
                   timeZone: "UTC",
                 });
 
+                const hasPrayed = prayedIds.has(req.id);
+                const isPraying = prayingId === req.id;
+
                 return (
                   <div
                     key={req.id}
@@ -289,11 +318,15 @@ export default function PrayerPage() {
                         {req.anonymous && <span className="italic">Anonymous</span>}
                       </div>
 
-                      <button className="flex items-center gap-1.5 font-body text-xs text-cream/40 hover:text-gold/70 transition-colors border border-gold/15 hover:border-gold/35 px-3 py-1.5">
+                      <button
+                        onClick={() => handlePray(req.id)}
+                        disabled={hasPrayed || isPraying}
+                        className="flex items-center gap-1.5 font-body text-xs text-cream/40 hover:text-gold/70 transition-colors border border-gold/15 hover:border-gold/35 px-3 py-1.5 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:text-cream/40 disabled:hover:border-gold/15"
+                      >
                         <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                         </svg>
-                        I prayed for this
+                        {hasPrayed ? "Prayed" : "I prayed for this"}
                       </button>
                     </div>
                   </div>
