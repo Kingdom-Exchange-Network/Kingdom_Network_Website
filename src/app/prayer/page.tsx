@@ -1,22 +1,63 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CrownLogo from "@/components/CrownLogo";
-import { prayerRequests } from "@/lib/seed-data";
 import { supabase } from "@/lib/supabase";
+
+type PrayerRequest = {
+  id: string;
+  title: string;
+  body: string;
+  region: string | null;
+  orgName: string | null;
+  anonymous: boolean;
+  postedAt: string;
+  prayerCount: number;
+};
 
 export default function PrayerPage() {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [requests, setRequests] = useState<PrayerRequest[]>([]);
+  const [loading, setLoading] = useState(true);
   const [formData, setFormData] = useState({
     title: "",
     body: "",
     region: "",
     anonymous: false,
   });
+
+  useEffect(() => {
+    async function fetchRequests() {
+      const { data, error: fetchError } = await supabase
+        .from("prayer_requests")
+        .select("*")
+        .eq("status", "approved")
+        .order("created_at", { ascending: false });
+
+      if (!fetchError && data) {
+        setRequests(
+          data.map((row) => ({
+            id: row.id,
+            title: row.title,
+            body: row.body,
+            region: row.region,
+            orgName: row.org_name,
+            anonymous: row.anonymous,
+            postedAt: row.created_at,
+            prayerCount: row.prayer_count,
+          }))
+        );
+      }
+
+      setLoading(false);
+    }
+
+    fetchRequests();
+  }, []);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -49,10 +90,6 @@ export default function PrayerPage() {
 
     setSubmitted(true);
   }
-
-  const sorted = [...prayerRequests].sort(
-    (a, b) => new Date(b.postedAt).getTime() - new Date(a.postedAt).getTime()
-  );
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -188,11 +225,23 @@ export default function PrayerPage() {
               <div className="flex items-center justify-between mb-2">
                 <h2 className="display-heading text-2xl">Active Requests</h2>
                 <p className="font-body text-xs text-cream/30">
-                  {prayerRequests.length} requests
+                  {requests.length} requests
                 </p>
               </div>
 
-              {sorted.map((req) => {
+              {loading && (
+                <p className="font-body text-sm text-cream/40 py-8">
+                  Loading requests...
+                </p>
+              )}
+
+              {!loading && requests.length === 0 && (
+                <p className="font-body text-sm text-cream/40 py-8">
+                  No prayer requests yet. Be the first to share one.
+                </p>
+              )}
+
+              {!loading && requests.map((req) => {
                 const formattedDate = new Date(req.postedAt).toLocaleDateString("en-US", {
                   month: "short",
                   day: "numeric",
