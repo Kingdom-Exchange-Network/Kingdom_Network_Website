@@ -224,9 +224,11 @@ export default function PrayerPage() {
             <div className="lg:col-span-2 space-y-4">
               <div className="flex items-center justify-between mb-2">
                 <h2 className="display-heading text-2xl">Active Requests</h2>
-                <p className="font-body text-xs text-cream/30">
-                  {requests.length} {requests.length === 1 ? "request" : "requests"}
-                </p>
+                {!loading && requests.length > 0 && (
+                  <p className="font-body text-xs text-cream/30">
+                    {requests.length} {requests.length === 1 ? "request" : "requests"}
+                  </p>
+                )}
               </div>
 
               {loading && (
