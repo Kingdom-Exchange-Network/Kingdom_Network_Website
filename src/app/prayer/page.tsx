@@ -5,9 +5,12 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CrownLogo from "@/components/CrownLogo";
 import { prayerRequests } from "@/lib/seed-data";
+import { supabase } from "@/lib/supabase";
 
 export default function PrayerPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     title: "",
     body: "",
@@ -15,9 +18,35 @@ export default function PrayerPage() {
     anonymous: false,
   });
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    // Supabase integration will be wired in Phase 2
+
+    const title = formData.title.trim();
+    const body = formData.body.trim();
+    if (!title || !body) {
+      setError("Please provide both a title and a prayer request.");
+      return;
+    }
+
+    setSubmitting(true);
+    setError(null);
+
+    const { error: insertError } = await supabase
+      .from("prayer_requests")
+      .insert({
+        title,
+        body,
+        region: formData.region || null,
+        anonymous: formData.anonymous,
+      });
+
+    setSubmitting(false);
+
+    if (insertError) {
+      setError("Something went wrong submitting your request. Please try again.");
+      return;
+    }
+
     setSubmitted(true);
   }
 
@@ -71,7 +100,7 @@ export default function PrayerPage() {
                       wall within 24 hours.
                     </p>
                     <button
-                      onClick={() => { setSubmitted(false); setFormData({ title: "", body: "", region: "", anonymous: false }); }}
+                      onClick={() => { setSubmitted(false); setError(null); setFormData({ title: "", body: "", region: "", anonymous: false }); }}
                       className="mt-5 font-body text-xs text-gold/50 hover:text-gold/80 transition-colors"
                     >
                       Submit another request
@@ -141,8 +170,13 @@ export default function PrayerPage() {
                         Post anonymously
                       </span>
                     </label>
-                    <button type="submit" className="btn-primary w-full">
-                      Submit Request
+                    {error && (
+                      <p className="font-body text-xs text-red-400/80 leading-relaxed">
+                        {error}
+                      </p>
+                    )}
+                    <button type="submit" disabled={submitting} className="btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed">
+                      {submitting ? "Submitting..." : "Submit Request"}
                     </button>
                   </form>
                 )}
