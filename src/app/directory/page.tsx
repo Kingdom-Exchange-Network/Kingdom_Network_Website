@@ -122,7 +122,7 @@ export default function DirectoryPage() {
 
               {/* Mountain */}
               <div>
-                <label htmlFor="filter-mountain" className="section-label block mb-2">Mountain</label>
+                <label htmlFor="filter-mountain" className="section-label block mb-2">Category</label>
                 <select
                   id="filter-mountain"
                   value={mountain}
@@ -132,7 +132,7 @@ export default function DirectoryPage() {
                   }}
                   className="w-full bg-plum-light border border-gold/20 px-3 py-2.5 font-body text-sm text-cream/70 outline-none focus:border-gold/50 transition-colors"
                 >
-                  <option value="">All Mountains</option>
+                  <option value="">All Categories</option>
                   {MOUNTAINS.map((m) => (
                     <option key={m.slug} value={m.slug}>{m.label}</option>
                   ))}

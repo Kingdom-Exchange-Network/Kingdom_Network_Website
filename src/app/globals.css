@@ -115,3 +115,14 @@
 .bg-plum-dark {
   background-color: rgba(8, 2, 16, 0.88);
 }
+
+/*
+  Theme native <select> dropdown option lists to match the dark palette
+  instead of the browser default (grey background, black text). Support for
+  styling native option lists varies by browser — Safari in particular may
+  partially or fully override these values with its own system rendering.
+*/
+option {
+  background-color: #160B2B;
+  color: #F0EAD8;
+}
