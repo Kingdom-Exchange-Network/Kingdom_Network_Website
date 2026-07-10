@@ -1,13 +1,37 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CrownLogo from "@/components/CrownLogo";
-import { prayerRequests } from "@/lib/seed-data";
+import { supabase } from "@/lib/supabase";
+
+type PrayerUpdate = {
+  id: string;
+  body: string;
+  createdAt: string;
+};
+
+type PrayerRequest = {
+  id: string;
+  title: string;
+  body: string;
+  region: string | null;
+  orgName: string | null;
+  anonymous: boolean;
+  postedAt: string;
+  prayerCount: number;
+  updates: PrayerUpdate[];
+};
 
 export default function PrayerPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [requests, setRequests] = useState<PrayerRequest[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [prayedIds, setPrayedIds] = useState<Set<string>>(new Set());
+  const [prayingId, setPrayingId] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     title: "",
     body: "",
@@ -15,15 +39,100 @@ export default function PrayerPage() {
     anonymous: false,
   });
 
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    // Supabase integration will be wired in Phase 2
-    setSubmitted(true);
+  useEffect(() => {
+    async function fetchRequests() {
+      const { data, error: fetchError } = await supabase
+        .from("prayer_requests")
+        .select("*, prayer_updates(id, body, created_at)")
+        .eq("status", "approved")
+        .order("created_at", { ascending: false });
+
+      if (!fetchError && data) {
+        setRequests(
+          data.map((row) => ({
+            id: row.id,
+            title: row.title,
+            body: row.body,
+            region: row.region,
+            orgName: row.org_name,
+            anonymous: row.anonymous,
+            postedAt: row.created_at,
+            prayerCount: row.prayer_count,
+            updates: (row.prayer_updates ?? [])
+              .map((update: { id: string; body: string; created_at: string }) => ({
+                id: update.id,
+                body: update.body,
+                createdAt: update.created_at,
+              }))
+              .sort(
+                (a: PrayerUpdate, b: PrayerUpdate) =>
+                  new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+              ),
+          }))
+        );
+      }
+
+      setLoading(false);
+    }
+
+    fetchRequests();
+  }, []);
+
+  async function handlePray(id: string) {
+    if (prayingId === id || prayedIds.has(id)) return;
+
+    setPrayingId(id);
+
+    const { error: rpcError } = await supabase.rpc("increment_prayer_count", {
+      request_id: id,
+    });
+
+    if (rpcError) {
+      console.error("Failed to increment prayer count:", rpcError);
+      setPrayingId(null);
+      return;
+    }
+
+    setRequests((prev) =>
+      prev.map((r) =>
+        r.id === id ? { ...r, prayerCount: r.prayerCount + 1 } : r
+      )
+    );
+    setPrayedIds((prev) => new Set(prev).add(id));
+    setPrayingId(null);
   }
 
-  const sorted = [...prayerRequests].sort(
-    (a, b) => new Date(b.postedAt).getTime() - new Date(a.postedAt).getTime()
-  );
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+
+    const title = formData.title.trim();
+    const body = formData.body.trim();
+    if (!title || !body) {
+      setError("Please provide both a title and a prayer request.");
+      return;
+    }
+
+    setSubmitting(true);
+    setError(null);
+
+    const { error: insertError } = await supabase
+      .from("prayer_requests")
+      .insert({
+        title,
+        body,
+        region: formData.region || null,
+        anonymous: formData.anonymous,
+      });
+
+    setSubmitting(false);
+
+    if (insertError) {
+      setError("Something went wrong submitting your request. Please try again.");
+      return;
+    }
+
+    setSubmitted(true);
+  }
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -71,7 +180,7 @@ export default function PrayerPage() {
                       wall within 24 hours.
                     </p>
                     <button
-                      onClick={() => { setSubmitted(false); setFormData({ title: "", body: "", region: "", anonymous: false }); }}
+                      onClick={() => { setSubmitted(false); setError(null); setFormData({ title: "", body: "", region: "", anonymous: false }); }}
                       className="mt-5 font-body text-xs text-gold/50 hover:text-gold/80 transition-colors"
                     >
                       Submit another request
@@ -141,8 +250,13 @@ export default function PrayerPage() {
                         Post anonymously
                       </span>
                     </label>
-                    <button type="submit" className="btn-primary w-full">
-                      Submit Request
+                    {error && (
+                      <p className="font-body text-xs text-red-400/80 leading-relaxed">
+                        {error}
+                      </p>
+                    )}
+                    <button type="submit" disabled={submitting} className="btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed">
+                      {submitting ? "Submitting..." : "Submit Request"}
                     </button>
                   </form>
                 )}
@@ -153,17 +267,35 @@ export default function PrayerPage() {
             <div className="lg:col-span-2 space-y-4">
               <div className="flex items-center justify-between mb-2">
                 <h2 className="display-heading text-2xl">Active Requests</h2>
-                <p className="font-body text-xs text-cream/30">
-                  {prayerRequests.length} requests
-                </p>
+                {!loading && requests.length > 0 && (
+                  <p className="font-body text-xs text-cream/30">
+                    {requests.length} {requests.length === 1 ? "request" : "requests"}
+                  </p>
+                )}
               </div>
 
-              {sorted.map((req) => {
+              {loading && (
+                <p className="font-body text-sm text-cream/40 py-8">
+                  Loading requests...
+                </p>
+              )}
+
+              {!loading && requests.length === 0 && (
+                <p className="font-body text-sm text-cream/40 py-8">
+                  No prayer requests yet. Be the first to share one.
+                </p>
+              )}
+
+              {!loading && requests.map((req) => {
                 const formattedDate = new Date(req.postedAt).toLocaleDateString("en-US", {
                   month: "short",
                   day: "numeric",
                   year: "numeric",
+                  timeZone: "UTC",
                 });
+
+                const hasPrayed = prayedIds.has(req.id);
+                const isPraying = prayingId === req.id;
 
                 return (
                   <div
@@ -186,6 +318,29 @@ export default function PrayerPage() {
                       {req.body}
                     </p>
 
+                    {req.updates.length > 0 && (
+                      <div className="border-t border-gold/10 pt-4 mb-4 space-y-3">
+                        <p className="section-label">Updates</p>
+                        {req.updates.map((update) => {
+                          const updateDate = new Date(update.createdAt).toLocaleDateString("en-US", {
+                            month: "short",
+                            day: "numeric",
+                            year: "numeric",
+                            timeZone: "UTC",
+                          });
+
+                          return (
+                            <div key={update.id}>
+                              <p className="font-body text-xs text-gold/50 mb-1">{updateDate}</p>
+                              <p className="font-body text-sm text-cream/55 leading-relaxed">
+                                {update.body}
+                              </p>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    )}
+
                     <div className="flex flex-wrap items-center justify-between gap-3">
                       <div className="flex items-center gap-3 font-body text-xs text-cream/30">
                         {req.region && (
@@ -203,11 +358,15 @@ export default function PrayerPage() {
                         {req.anonymous && <span className="italic">Anonymous</span>}
                       </div>
 
-                      <button className="flex items-center gap-1.5 font-body text-xs text-cream/40 hover:text-gold/70 transition-colors border border-gold/15 hover:border-gold/35 px-3 py-1.5">
+                      <button
+                        onClick={() => handlePray(req.id)}
+                        disabled={hasPrayed || isPraying}
+                        className="flex items-center gap-1.5 font-body text-xs text-cream/40 hover:text-gold/70 transition-colors border border-gold/15 hover:border-gold/35 px-3 py-1.5 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:text-cream/40 disabled:hover:border-gold/15"
+                      >
                         <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                         </svg>
-                        I prayed for this
+                        {hasPrayed ? "Prayed" : "I prayed for this"}
                       </button>
                     </div>
                   </div>
