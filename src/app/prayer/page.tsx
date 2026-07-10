@@ -225,7 +225,7 @@ export default function PrayerPage() {
               <div className="flex items-center justify-between mb-2">
                 <h2 className="display-heading text-2xl">Active Requests</h2>
                 <p className="font-body text-xs text-cream/30">
-                  {requests.length} requests
+                  {requests.length} {requests.length === 1 ? "request" : "requests"}
                 </p>
               </div>
 
