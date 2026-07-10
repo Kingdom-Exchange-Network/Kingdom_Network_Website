@@ -184,12 +184,15 @@ Component classes defined in `globals.css`: `.btn-primary`, `.btn-outline`, `.se
 
 - Sanity CMS integration
 - Featured Missions blog
-- Prayer requests page (submit, display, updates, prayer count)
+- Prayer requests page (submit, display, updates, prayer count) ✅ — currently open + auto-approve; planned move behind free member sign-in wall (see Phase 3)
 - News & Events section
 - Newsletter signup + Mailchimp integration
 
 ### Phase 3 — Member Portal & Monetization
 
+> Better Auth backend is already complete (Phase 1); only the sign-in / session UI remains.
+
+- Free member tier + sign-in wall for prayer request submission (identity auto-fills from profile; anonymous option hides name)
 - Member dashboard scaffold
 - Organization claiming / self-service profile editing
 - Stripe subscription setup + premium listing tiers
