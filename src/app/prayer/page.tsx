@@ -6,6 +6,12 @@ import Footer from "@/components/Footer";
 import CrownLogo from "@/components/CrownLogo";
 import { supabase } from "@/lib/supabase";
 
+type PrayerUpdate = {
+  id: string;
+  body: string;
+  createdAt: string;
+};
+
 type PrayerRequest = {
   id: string;
   title: string;
@@ -15,6 +21,7 @@ type PrayerRequest = {
   anonymous: boolean;
   postedAt: string;
   prayerCount: number;
+  updates: PrayerUpdate[];
 };
 
 export default function PrayerPage() {
@@ -36,7 +43,7 @@ export default function PrayerPage() {
     async function fetchRequests() {
       const { data, error: fetchError } = await supabase
         .from("prayer_requests")
-        .select("*")
+        .select("*, prayer_updates(id, body, created_at)")
         .eq("status", "approved")
         .order("created_at", { ascending: false });
 
@@ -51,6 +58,16 @@ export default function PrayerPage() {
             anonymous: row.anonymous,
             postedAt: row.created_at,
             prayerCount: row.prayer_count,
+            updates: (row.prayer_updates ?? [])
+              .map((update: { id: string; body: string; created_at: string }) => ({
+                id: update.id,
+                body: update.body,
+                createdAt: update.created_at,
+              }))
+              .sort(
+                (a: PrayerUpdate, b: PrayerUpdate) =>
+                  new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+              ),
           }))
         );
       }
@@ -300,6 +317,29 @@ export default function PrayerPage() {
                     <p className="font-body text-sm text-cream/60 leading-relaxed mb-4">
                       {req.body}
                     </p>
+
+                    {req.updates.length > 0 && (
+                      <div className="border-t border-gold/10 pt-4 mb-4 space-y-3">
+                        <p className="section-label">Updates</p>
+                        {req.updates.map((update) => {
+                          const updateDate = new Date(update.createdAt).toLocaleDateString("en-US", {
+                            month: "short",
+                            day: "numeric",
+                            year: "numeric",
+                            timeZone: "UTC",
+                          });
+
+                          return (
+                            <div key={update.id}>
+                              <p className="font-body text-xs text-gold/50 mb-1">{updateDate}</p>
+                              <p className="font-body text-sm text-cream/55 leading-relaxed">
+                                {update.body}
+                              </p>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    )}
 
                     <div className="flex flex-wrap items-center justify-between gap-3">
                       <div className="flex items-center gap-3 font-body text-xs text-cream/30">
