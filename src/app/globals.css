@@ -59,13 +59,13 @@
   }
 
   .btn-primary {
-    @apply bg-gold text-navy font-body font-semibold px-6 py-2.5 text-sm tracking-wide transition-all duration-200;
+    @apply bg-gold text-plum font-body font-semibold px-6 py-2.5 text-sm tracking-wide transition-all duration-200;
     @apply hover:bg-gold-light;
   }
 
   .btn-outline {
     @apply border border-gold text-gold font-body text-sm px-6 py-2.5 tracking-wide transition-all duration-200;
-    @apply hover:bg-gold hover:text-navy;
+    @apply hover:bg-gold hover:text-plum;
   }
 
   .section-label {
@@ -100,18 +100,18 @@
 
 /*
   Unlayered overrides — these beat Tailwind's @layer utilities in the cascade.
-  Section-level bg-navy elements become transparent so the body gradient shows
-  through. Cards (bg-navy-light) and the footer (bg-navy-dark) keep a
+  Section-level bg-plum elements become transparent so the body gradient shows
+  through. Cards (bg-plum-light) and the footer (bg-plum-dark) keep a
   semi-transparent dark surface for readability.
 */
-.bg-navy {
+.bg-plum {
   background-color: transparent;
 }
 
-.bg-navy-light {
+.bg-plum-light {
   background-color: rgba(22, 11, 43, 0.80);
 }
 
-.bg-navy-dark {
+.bg-plum-dark {
   background-color: rgba(8, 2, 16, 0.88);
 }

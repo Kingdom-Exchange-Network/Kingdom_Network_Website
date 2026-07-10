@@ -9,8 +9,8 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // ── Option 1 active: Deep Tyrian Purple ─────────────────────
-        navy: {
+        // ── Option 1 active: Deep Tyrian Purple (plum) ──────────────
+        plum: {
           DEFAULT: "#0D0519",
           dark:    "#080210",
           light:   "#160B2B",

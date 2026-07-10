@@ -121,7 +121,7 @@ export const categoryColors: Record<OrgCategory, string> = {
   hiring: "bg-gold/20 text-gold border-gold/30",
   volunteers: "bg-tag-purple/20 text-purple-300 border-purple-500/30",
   education: "bg-tag-blue/20 text-blue-300 border-blue-500/30",
-  church: "bg-navy-light text-cream/60 border-cream/20",
+  church: "bg-plum-light text-cream/60 border-cream/20",
   missions: "bg-gold/10 text-gold/80 border-gold/20",
-  marketplace: "bg-navy-light text-cream/60 border-cream/20",
+  marketplace: "bg-plum-light text-cream/60 border-cream/20",
 };

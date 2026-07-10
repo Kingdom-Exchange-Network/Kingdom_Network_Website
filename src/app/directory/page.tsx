@@ -61,7 +61,7 @@ export default function DirectoryPage() {
       <Header />
 
       {/* Page header */}
-      <div className="bg-navy pt-28 pb-12 border-b border-gold/10">
+      <div className="bg-plum pt-28 pb-12 border-b border-gold/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="section-label mb-3">Kingdom Exchange</p>
           <h1 className="display-heading text-5xl mb-4">Organization Directory</h1>
@@ -72,7 +72,7 @@ export default function DirectoryPage() {
         </div>
       </div>
 
-      <div className="flex-1 bg-navy py-10">
+      <div className="flex-1 bg-plum py-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-8">
 
@@ -86,7 +86,7 @@ export default function DirectoryPage() {
                   placeholder="Name or keyword..."
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
-                  className="w-full bg-navy-light border border-gold/20 px-3 py-2.5 font-body text-sm text-cream placeholder:text-cream/30 outline-none focus:border-gold/50 transition-colors"
+                  className="w-full bg-plum-light border border-gold/20 px-3 py-2.5 font-body text-sm text-cream placeholder:text-cream/30 outline-none focus:border-gold/50 transition-colors"
                 />
               </div>
 
@@ -97,7 +97,7 @@ export default function DirectoryPage() {
                   id="filter-region"
                   value={region}
                   onChange={(e) => setRegion(e.target.value)}
-                  className="w-full bg-navy-light border border-gold/20 px-3 py-2.5 font-body text-sm text-cream/70 outline-none focus:border-gold/50 transition-colors"
+                  className="w-full bg-plum-light border border-gold/20 px-3 py-2.5 font-body text-sm text-cream/70 outline-none focus:border-gold/50 transition-colors"
                 >
                   {regionOptions.map((r) => (
                     <option key={r} value={r}>{r}</option>
@@ -112,7 +112,7 @@ export default function DirectoryPage() {
                   id="filter-type"
                   value={type}
                   onChange={(e) => setType(e.target.value as OrgType | "")}
-                  className="w-full bg-navy-light border border-gold/20 px-3 py-2.5 font-body text-sm text-cream/70 outline-none focus:border-gold/50 transition-colors"
+                  className="w-full bg-plum-light border border-gold/20 px-3 py-2.5 font-body text-sm text-cream/70 outline-none focus:border-gold/50 transition-colors"
                 >
                   {typeOptions.map((t) => (
                     <option key={t.value} value={t.value}>{t.label}</option>
@@ -130,7 +130,7 @@ export default function DirectoryPage() {
                     setMountain(e.target.value as Mountain | "");
                     setSubcategory("");
                   }}
-                  className="w-full bg-navy-light border border-gold/20 px-3 py-2.5 font-body text-sm text-cream/70 outline-none focus:border-gold/50 transition-colors"
+                  className="w-full bg-plum-light border border-gold/20 px-3 py-2.5 font-body text-sm text-cream/70 outline-none focus:border-gold/50 transition-colors"
                 >
                   <option value="">All Mountains</option>
                   {MOUNTAINS.map((m) => (
@@ -147,7 +147,7 @@ export default function DirectoryPage() {
                     id="filter-subcategory"
                     value={subcategory}
                     onChange={(e) => setSubcategory(e.target.value)}
-                    className="w-full bg-navy-light border border-gold/20 px-3 py-2.5 font-body text-sm text-cream/70 outline-none focus:border-gold/50 transition-colors"
+                    className="w-full bg-plum-light border border-gold/20 px-3 py-2.5 font-body text-sm text-cream/70 outline-none focus:border-gold/50 transition-colors"
                   >
                     <option value="">All Subcategories</option>
                     {activeMountain.subcategories.map((s) => (
@@ -179,7 +179,7 @@ export default function DirectoryPage() {
                         onClick={() => set(!value)}
                       >
                         {value && (
-                          <svg className="w-2.5 h-2.5 text-navy" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <svg className="w-2.5 h-2.5 text-plum" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                           </svg>
                         )}

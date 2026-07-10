@@ -159,7 +159,7 @@ export default function PrayerPage() {
       <Header />
 
       {/* Hero */}
-      <div className="bg-navy pt-28 pb-14 border-b border-gold/10">
+      <div className="bg-plum pt-28 pb-14 border-b border-gold/10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="flex justify-center mb-6">
             <span className="text-gold"><CrownLogo size={28} /></span>
@@ -173,13 +173,13 @@ export default function PrayerPage() {
         </div>
       </div>
 
-      <div className="flex-1 bg-navy py-14">
+      <div className="flex-1 bg-plum py-14">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
 
             {/* Submit form */}
             <aside className="lg:col-span-1">
-              <div className="bg-navy-light border border-gold/15 p-6 sticky top-24">
+              <div className="bg-plum-light border border-gold/15 p-6 sticky top-24">
                 <h2 className="display-heading text-2xl mb-1">Submit a Request</h2>
                 <p className="font-body text-xs text-cream/40 mb-5 leading-relaxed">
                   Share a prayer need with the network.
@@ -215,7 +215,7 @@ export default function PrayerPage() {
                         value={formData.title}
                         onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                         placeholder="Brief title for your request"
-                        className="w-full bg-navy border border-gold/20 px-3 py-2.5 font-body text-sm text-cream placeholder:text-cream/25 outline-none focus:border-gold/50 transition-colors"
+                        className="w-full bg-plum border border-gold/20 px-3 py-2.5 font-body text-sm text-cream placeholder:text-cream/25 outline-none focus:border-gold/50 transition-colors"
                       />
                     </div>
                     <div>
@@ -226,7 +226,7 @@ export default function PrayerPage() {
                         value={formData.body}
                         onChange={(e) => setFormData({ ...formData, body: e.target.value })}
                         placeholder="Share what you'd like the network to pray for..."
-                        className="w-full bg-navy border border-gold/20 px-3 py-2.5 font-body text-sm text-cream placeholder:text-cream/25 outline-none focus:border-gold/50 transition-colors resize-none"
+                        className="w-full bg-plum border border-gold/20 px-3 py-2.5 font-body text-sm text-cream placeholder:text-cream/25 outline-none focus:border-gold/50 transition-colors resize-none"
                       />
                     </div>
                     <div>
@@ -234,7 +234,7 @@ export default function PrayerPage() {
                       <select
                         value={formData.region}
                         onChange={(e) => setFormData({ ...formData, region: e.target.value })}
-                        className="w-full bg-navy border border-gold/20 px-3 py-2.5 font-body text-sm text-cream/70 outline-none focus:border-gold/50 transition-colors"
+                        className="w-full bg-plum border border-gold/20 px-3 py-2.5 font-body text-sm text-cream/70 outline-none focus:border-gold/50 transition-colors"
                       >
                         <option value="">Select region...</option>
                         <option>North America</option>
@@ -257,7 +257,7 @@ export default function PrayerPage() {
                         onClick={() => setFormData({ ...formData, anonymous: !formData.anonymous })}
                       >
                         {formData.anonymous && (
-                          <svg className="w-2.5 h-2.5 text-navy" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <svg className="w-2.5 h-2.5 text-plum" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                           </svg>
                         )}
@@ -319,13 +319,13 @@ export default function PrayerPage() {
                 return (
                   <div
                     key={req.id}
-                    className="bg-navy-light border border-gold/10 hover:border-gold/20 transition-colors p-6"
+                    className="bg-plum-light border border-gold/10 hover:border-gold/20 transition-colors p-6"
                   >
                     <div className="flex items-start justify-between gap-4 mb-3">
                       <h3 className="font-display text-xl text-cream leading-snug">
                         {req.title}
                       </h3>
-                      <div className="flex items-center gap-1 shrink-0 bg-navy border border-gold/15 px-2.5 py-1">
+                      <div className="flex items-center gap-1 shrink-0 bg-plum border border-gold/15 px-2.5 py-1">
                         <svg className="w-3 h-3 text-gold/60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                         </svg>

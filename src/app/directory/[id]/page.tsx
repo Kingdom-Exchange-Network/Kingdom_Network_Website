@@ -22,7 +22,7 @@ export default function OrgProfilePage({ params }: Props) {
       <Header />
 
       {/* Top bar */}
-      <div className="bg-navy pt-24 pb-0 border-b border-gold/10">
+      <div className="bg-plum pt-24 pb-0 border-b border-gold/10">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 font-body text-xs text-cream/30 mb-8">
@@ -36,7 +36,7 @@ export default function OrgProfilePage({ params }: Props) {
           {/* Org header */}
           <div className="flex flex-col sm:flex-row items-start gap-6 pb-10">
             {/* Logo / initials */}
-            <div className="w-20 h-20 bg-navy-light border border-gold/20 flex items-center justify-center shrink-0">
+            <div className="w-20 h-20 bg-plum-light border border-gold/20 flex items-center justify-center shrink-0">
               <span className="font-display text-4xl text-gold/70">{org.name.charAt(0)}</span>
             </div>
 
@@ -79,7 +79,7 @@ export default function OrgProfilePage({ params }: Props) {
       </div>
 
       {/* Body */}
-      <div className="flex-1 bg-navy py-12">
+      <div className="flex-1 bg-plum py-12">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
 
@@ -127,7 +127,7 @@ export default function OrgProfilePage({ params }: Props) {
             {/* Sidebar */}
             <aside className="space-y-5">
               {/* Contact card */}
-              <div className="bg-navy-light border border-gold/15 p-6 space-y-4">
+              <div className="bg-plum-light border border-gold/15 p-6 space-y-4">
                 <h3 className="section-label">Connect</h3>
 
                 {org.website && (
@@ -150,7 +150,7 @@ export default function OrgProfilePage({ params }: Props) {
               </div>
 
               {/* Quick info */}
-              <div className="bg-navy-light border border-gold/15 p-6 space-y-3">
+              <div className="bg-plum-light border border-gold/15 p-6 space-y-3">
                 <h3 className="section-label mb-1">Details</h3>
                 {[
                   { label: "Type", value: org.type.charAt(0).toUpperCase() + org.type.slice(1) },

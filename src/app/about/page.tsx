@@ -32,7 +32,7 @@ export default function AboutPage() {
       <Header />
 
       {/* Hero */}
-      <div className="bg-navy pt-28 pb-16 border-b border-gold/10">
+      <div className="bg-plum pt-28 pb-16 border-b border-gold/10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="flex justify-center mb-6">
             <span className="text-gold"><CrownLogo size={30} /></span>
@@ -50,7 +50,7 @@ export default function AboutPage() {
       </div>
 
       {/* Mission */}
-      <section className="bg-navy py-20 border-b border-gold/10">
+      <section className="bg-plum py-20 border-b border-gold/10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
             <div>
@@ -88,7 +88,7 @@ export default function AboutPage() {
       </section>
 
       {/* Vetting process */}
-      <section id="vetting" className="bg-navy-light py-20 border-b border-gold/10">
+      <section id="vetting" className="bg-plum-light py-20 border-b border-gold/10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <p className="section-label mb-3">Trust & Safety</p>
@@ -101,7 +101,7 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-gold/10">
             {vettingSteps.map((s) => (
-              <div key={s.step} className="bg-navy-light p-8">
+              <div key={s.step} className="bg-plum-light p-8">
                 <span className="font-display text-5xl text-gold/20 block mb-4">{s.step}</span>
                 <h3 className="font-display text-xl text-cream mb-3">{s.title}</h3>
                 <p className="font-body text-sm text-cream/55 leading-relaxed">{s.body}</p>
@@ -109,7 +109,7 @@ export default function AboutPage() {
             ))}
           </div>
 
-          <div className="mt-10 bg-navy border border-gold/15 p-6">
+          <div className="mt-10 bg-plum border border-gold/15 p-6">
             <p className="font-body text-sm text-cream/50 leading-relaxed">
               <span className="text-gold">Premium Kingdom Partner tier</span> includes a deeper vetting review
               and annual re-verification. This tier provides additional trust signals to donors and volunteers
@@ -124,7 +124,7 @@ export default function AboutPage() {
       </section>
 
       {/* Audience */}
-      <section className="bg-navy py-20 border-b border-gold/10">
+      <section className="bg-plum py-20 border-b border-gold/10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="section-label mb-3 text-center">Who We Serve</p>
           <h2 className="display-heading text-4xl text-center mb-10">The Kingdom Network</h2>
@@ -140,7 +140,7 @@ export default function AboutPage() {
             ].map(({ icon, label }) => (
               <div
                 key={label}
-                className="bg-navy-light border border-gold/10 p-6 text-center"
+                className="bg-plum-light border border-gold/10 p-6 text-center"
               >
                 <span className="text-3xl block mb-3">{icon}</span>
                 <span className="font-body text-sm text-cream/60">{label}</span>
@@ -151,7 +151,7 @@ export default function AboutPage() {
       </section>
 
       {/* Liability Disclaimer */}
-      <section id="disclaimer" className="bg-navy-dark py-16">
+      <section id="disclaimer" className="bg-plum-dark py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="display-heading text-2xl mb-5">Liability Disclaimer</h2>
           <div className="font-body text-xs text-cream/35 leading-relaxed space-y-3">

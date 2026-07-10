@@ -9,12 +9,12 @@ export default function OrgCard({ org }: OrgCardProps) {
   return (
     <Link
       href={`/directory/${org.id}`}
-      className="block group bg-navy-light border border-gold/10 hover:border-gold/30 transition-all duration-300 p-5"
+      className="block group bg-plum-light border border-gold/10 hover:border-gold/30 transition-all duration-300 p-5"
     >
       {/* Header row */}
       <div className="flex items-start justify-between gap-3 mb-3">
         {/* Logo placeholder / initials */}
-        <div className="w-10 h-10 bg-navy border border-gold/20 flex items-center justify-center shrink-0">
+        <div className="w-10 h-10 bg-plum border border-gold/20 flex items-center justify-center shrink-0">
           <span className="font-display text-lg text-gold/70">
             {org.name.charAt(0)}
           </span>

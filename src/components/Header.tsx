@@ -19,7 +19,7 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-navy/95 backdrop-blur-sm border-b border-gold-thin">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-plum/95 backdrop-blur-sm border-b border-gold-thin">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -49,7 +49,7 @@ export default function Header() {
                     : "text-cream/70 hover:text-cream"
                 } ${
                   link.label === "Donate"
-                    ? "ml-2 border border-gold/40 text-gold hover:bg-gold hover:text-navy px-4 py-1.5"
+                    ? "ml-2 border border-gold/40 text-gold hover:bg-gold hover:text-plum px-4 py-1.5"
                     : ""
                 }`}
               >
@@ -79,14 +79,14 @@ export default function Header() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden bg-navy-light border-t border-gold-thin px-4 py-4">
+        <div className="md:hidden bg-plum-light border-t border-gold-thin px-4 py-4">
           <nav className="flex flex-col gap-1">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className={`font-body text-sm py-2.5 px-3 tracking-wide transition-colors duration-200 border-b border-navy-border last:border-b-0 ${
+                className={`font-body text-sm py-2.5 px-3 tracking-wide transition-colors duration-200 border-b border-plum-border last:border-b-0 ${
                   pathname === link.href ? "text-gold" : "text-cream/70"
                 }`}
               >

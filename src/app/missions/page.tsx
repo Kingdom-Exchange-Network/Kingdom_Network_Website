@@ -8,7 +8,7 @@ export default function MissionsPage() {
     <div className="min-h-screen flex flex-col">
       <Header />
 
-      <div className="bg-navy pt-28 pb-12 border-b border-gold/10">
+      <div className="bg-plum pt-28 pb-12 border-b border-gold/10">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="section-label mb-3">Stories</p>
           <h1 className="display-heading text-5xl mb-4">Featured Missions</h1>
@@ -19,14 +19,14 @@ export default function MissionsPage() {
         </div>
       </div>
 
-      <div className="flex-1 bg-navy py-12">
+      <div className="flex-1 bg-plum py-12">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-4">
             {featuredMissions.map((mission) => (
               <Link
                 key={mission.id}
                 href={`/missions/${mission.id}`}
-                className="group flex flex-col sm:flex-row gap-6 bg-navy-light border border-gold/10 hover:border-gold/30 transition-all duration-300 p-6"
+                className="group flex flex-col sm:flex-row gap-6 bg-plum-light border border-gold/10 hover:border-gold/30 transition-all duration-300 p-6"
               >
                 {/* Date / meta */}
                 <div className="sm:w-36 shrink-0">

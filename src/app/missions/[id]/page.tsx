@@ -44,7 +44,7 @@ export default function MissionArticlePage({ params }: Props) {
       <Header />
 
       {/* Article header */}
-      <div className="bg-navy pt-28 pb-16 border-b border-gold/10">
+      <div className="bg-plum pt-28 pb-16 border-b border-gold/10">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 font-body text-xs text-cream/30 mb-10">
@@ -86,7 +86,7 @@ export default function MissionArticlePage({ params }: Props) {
       </div>
 
       {/* Article body */}
-      <article className="flex-1 bg-navy py-16">
+      <article className="flex-1 bg-plum py-16">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-6">
             {mission.body.map((paragraph, i) => (
@@ -112,8 +112,8 @@ export default function MissionArticlePage({ params }: Props) {
 
           {/* Org callout */}
           {org && (
-            <div className="bg-navy-light border border-gold/15 p-6 flex flex-col sm:flex-row items-start gap-5">
-              <div className="w-14 h-14 bg-navy border border-gold/20 flex items-center justify-center shrink-0">
+            <div className="bg-plum-light border border-gold/15 p-6 flex flex-col sm:flex-row items-start gap-5">
+              <div className="w-14 h-14 bg-plum border border-gold/20 flex items-center justify-center shrink-0">
                 <span className="font-display text-2xl text-gold/70">{org.name.charAt(0)}</span>
               </div>
               <div className="flex-1">

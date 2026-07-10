@@ -43,7 +43,7 @@ export default function HomePage() {
       <Header />
 
       {/* ── HERO ───────────────────────────────────────────────────── */}
-      <section className="relative flex items-center min-h-screen bg-navy pt-16 overflow-hidden">
+      <section className="relative flex items-center min-h-screen bg-plum pt-16 overflow-hidden">
         {/* Background radial glow */}
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full bg-gold/5 blur-[120px]" />
@@ -77,20 +77,20 @@ export default function HomePage() {
 
           {/* Embedded search bar */}
           <div className="max-w-3xl mx-auto">
-            <div className="bg-navy-light border border-gold/20 p-1 flex flex-col sm:flex-row gap-1">
+            <div className="bg-plum-light border border-gold/20 p-1 flex flex-col sm:flex-row gap-1">
               <input
                 type="text"
                 placeholder="Search organizations, regions, needs..."
                 className="flex-1 bg-transparent px-4 py-3 font-body text-sm text-cream placeholder:text-cream/30 outline-none"
               />
-              <select aria-label="Organization type" className="bg-navy border-0 sm:border-l border-t border-gold/20 px-4 py-3 font-body text-sm text-cream/60 outline-none cursor-pointer min-w-[130px]">
+              <select aria-label="Organization type" className="bg-plum border-0 sm:border-l border-t border-gold/20 px-4 py-3 font-body text-sm text-cream/60 outline-none cursor-pointer min-w-[130px]">
                 <option value="">All Types</option>
                 <option value="nonprofit">Nonprofit</option>
                 <option value="church">Church</option>
                 <option value="ministry">Ministry</option>
                 <option value="forprofit">Business</option>
               </select>
-              <select aria-label="Region" className="bg-navy border-0 sm:border-l border-t border-gold/20 px-4 py-3 font-body text-sm text-cream/60 outline-none cursor-pointer min-w-[130px]">
+              <select aria-label="Region" className="bg-plum border-0 sm:border-l border-t border-gold/20 px-4 py-3 font-body text-sm text-cream/60 outline-none cursor-pointer min-w-[130px]">
                 <option value="">All Regions</option>
                 <option value="north-america">North America</option>
                 <option value="latin-america">Latin America</option>
@@ -102,7 +102,7 @@ export default function HomePage() {
                 <option value="middle-east">Middle East</option>
                 <option value="global">Global</option>
               </select>
-              <select aria-label="Need type" className="bg-navy border-0 sm:border-l border-t border-gold/20 px-4 py-3 font-body text-sm text-cream/60 outline-none cursor-pointer min-w-[130px]">
+              <select aria-label="Need type" className="bg-plum border-0 sm:border-l border-t border-gold/20 px-4 py-3 font-body text-sm text-cream/60 outline-none cursor-pointer min-w-[130px]">
                 <option value="">All Needs</option>
                 <option value="resource coordination">Resource Coordination</option>
                 <option value="hiring">Hiring</option>
@@ -125,11 +125,11 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-navy to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-plum to-transparent pointer-events-none" />
       </section>
 
       {/* ── THREE PILLARS ──────────────────────────────────────────── */}
-      <section className="bg-navy border-y border-gold/10 py-20">
+      <section className="bg-plum border-y border-gold/10 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <p className="section-label mb-3">Why KMAN</p>
@@ -139,7 +139,7 @@ export default function HomePage() {
             {pillars.map((pillar, i) => (
               <div
                 key={i}
-                className="bg-navy px-10 py-12 text-center flex flex-col items-center gap-5"
+                className="bg-plum px-10 py-12 text-center flex flex-col items-center gap-5"
               >
                 <div className="w-14 h-14 border border-gold/30 flex items-center justify-center text-gold">
                   {pillar.icon}
@@ -155,7 +155,7 @@ export default function HomePage() {
       </section>
 
       {/* ── FEATURED ORGANIZATIONS ─────────────────────────────────── */}
-      <section className="bg-navy py-20">
+      <section className="bg-plum py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-end justify-between mb-10">
             <div>
@@ -183,7 +183,7 @@ export default function HomePage() {
       </section>
 
       {/* ── FEATURED MISSIONS ──────────────────────────────────────── */}
-      <section className="bg-navy-light border-t border-gold/10 py-20">
+      <section className="bg-plum-light border-t border-gold/10 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-end justify-between mb-10">
             <div>
@@ -199,7 +199,7 @@ export default function HomePage() {
               <Link
                 key={mission.id}
                 href={`/missions/${mission.id}`}
-                className="group block bg-navy border border-gold/10 hover:border-gold/30 transition-all duration-300 p-6"
+                className="group block bg-plum border border-gold/10 hover:border-gold/30 transition-all duration-300 p-6"
               >
                 <div className="flex items-center gap-2 mb-4">
                   <span className="section-label text-[10px]">{mission.region}</span>
@@ -222,7 +222,7 @@ export default function HomePage() {
       </section>
 
       {/* ── CTA BAND ───────────────────────────────────────────────── */}
-      <section className="bg-navy border-t border-gold/10 py-20">
+      <section className="bg-plum border-t border-gold/10 py-20">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <div className="flex justify-center mb-6">
             <span className="text-gold"><CrownLogo size={30} /></span>
