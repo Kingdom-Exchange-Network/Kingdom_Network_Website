@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@better-auth/infra": "^0.2.10",
+    "@headlessui/react": "^2.2.10",
     "@next/font": "^14.2.15",
     "@supabase/supabase-js": "^2.110.2",
     "@types/pg": "^8.20.0",
