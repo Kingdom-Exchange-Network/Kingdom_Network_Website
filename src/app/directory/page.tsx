@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import OrgCard from "@/components/OrgCard";
+import Select from "@/components/Select";
 import { seedOrganizations } from "@/lib/seed-data";
 import { OrgType, Mountain, MOUNTAINS } from "@/lib/types";
 
@@ -93,87 +94,59 @@ export default function DirectoryPage() {
               {/* Region */}
               <div>
                 <label htmlFor="filter-region" className="section-label block mb-2">Region</label>
-                <div className="relative">
-                  <select
-                    id="filter-region"
-                    value={region}
-                    onChange={(e) => setRegion(e.target.value)}
-                    className="w-full appearance-none bg-plum-light border border-gold/20 px-3 pr-8 py-2.5 font-body text-sm text-cream/70 outline-none focus:border-gold/50 transition-colors"
-                  >
-                    {regionOptions.map((r) => (
-                      <option key={r} value={r}>{r}</option>
-                    ))}
-                  </select>
-                  <svg aria-hidden="true" className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gold/40" viewBox="0 0 20 20" fill="none">
-                    <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </div>
+                <Select
+                  id="filter-region"
+                  ariaLabel="Region"
+                  value={region}
+                  onChange={setRegion}
+                  options={regionOptions.map((r) => ({ value: r, label: r }))}
+                />
               </div>
 
               {/* Type */}
               <div>
                 <label htmlFor="filter-type" className="section-label block mb-2">Organization Type</label>
-                <div className="relative">
-                  <select
-                    id="filter-type"
-                    value={type}
-                    onChange={(e) => setType(e.target.value as OrgType | "")}
-                    className="w-full appearance-none bg-plum-light border border-gold/20 px-3 pr-8 py-2.5 font-body text-sm text-cream/70 outline-none focus:border-gold/50 transition-colors"
-                  >
-                    {typeOptions.map((t) => (
-                      <option key={t.value} value={t.value}>{t.label}</option>
-                    ))}
-                  </select>
-                  <svg aria-hidden="true" className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gold/40" viewBox="0 0 20 20" fill="none">
-                    <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </div>
+                <Select
+                  id="filter-type"
+                  ariaLabel="Organization type"
+                  value={type}
+                  onChange={(v) => setType(v as OrgType | "")}
+                  options={typeOptions}
+                />
               </div>
 
               {/* Mountain */}
               <div>
                 <label htmlFor="filter-mountain" className="section-label block mb-2">Category</label>
-                <div className="relative">
-                  <select
-                    id="filter-mountain"
-                    value={mountain}
-                    onChange={(e) => {
-                      setMountain(e.target.value as Mountain | "");
-                      setSubcategory("");
-                    }}
-                    className="w-full appearance-none bg-plum-light border border-gold/20 px-3 pr-8 py-2.5 font-body text-sm text-cream/70 outline-none focus:border-gold/50 transition-colors"
-                  >
-                    <option value="">All Categories</option>
-                    {MOUNTAINS.map((m) => (
-                      <option key={m.slug} value={m.slug}>{m.label}</option>
-                    ))}
-                  </select>
-                  <svg aria-hidden="true" className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gold/40" viewBox="0 0 20 20" fill="none">
-                    <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </div>
+                <Select
+                  id="filter-mountain"
+                  ariaLabel="Category"
+                  value={mountain}
+                  onChange={(v) => {
+                    setMountain(v as Mountain | "");
+                    setSubcategory("");
+                  }}
+                  options={[
+                    { value: "", label: "All Categories" },
+                    ...MOUNTAINS.map((m) => ({ value: m.slug, label: m.label })),
+                  ]}
+                />
               </div>
 
               {/* Subcategory */}
               {activeMountain && (
                 <div>
                   <label htmlFor="filter-subcategory" className="section-label block mb-2">Subcategory</label>
-                  <div className="relative">
-                    <select
-                      id="filter-subcategory"
-                      value={subcategory}
-                      onChange={(e) => setSubcategory(e.target.value)}
-                      className="w-full appearance-none bg-plum-light border border-gold/20 px-3 pr-8 py-2.5 font-body text-sm text-cream/70 outline-none focus:border-gold/50 transition-colors"
-                    >
-                      <option value="">All Subcategories</option>
-                      {activeMountain.subcategories.map((s) => (
-                        <option key={s.slug} value={s.slug}>{s.label}</option>
-                      ))}
-                    </select>
-                    <svg aria-hidden="true" className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gold/40" viewBox="0 0 20 20" fill="none">
-                      <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
+                  <Select
+                    id="filter-subcategory"
+                    ariaLabel="Subcategory"
+                    value={subcategory}
+                    onChange={setSubcategory}
+                    options={[
+                      { value: "", label: "All Subcategories" },
+                      ...activeMountain.subcategories.map((s) => ({ value: s.slug, label: s.label })),
+                    ]}
+                  />
                 </div>
               )}
 
