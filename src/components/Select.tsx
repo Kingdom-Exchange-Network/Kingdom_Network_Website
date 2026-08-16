@@ -29,6 +29,8 @@ type SelectProps = {
   placeholder?: string;
   id?: string;
   ariaLabel?: string;
+  /** Extra classes for the button, appended so callers can override the defaults. */
+  className?: string;
 };
 
 export default function Select({
@@ -38,6 +40,7 @@ export default function Select({
   placeholder,
   id,
   ariaLabel,
+  className,
 }: SelectProps) {
   const selected = options.find((o) => o.value === value);
 
@@ -47,7 +50,7 @@ export default function Select({
         <Listbox.Button
           id={id}
           aria-label={ariaLabel}
-          className="relative w-full bg-plum-light border border-gold/20 px-3 pr-8 py-2.5 font-body text-sm text-cream/70 text-left outline-none focus:border-gold/50 transition-colors"
+          className={`relative w-full bg-plum-light border border-gold/20 px-3 pr-8 py-2.5 font-body text-sm text-cream/70 text-left outline-none focus:border-gold/50 transition-colors ${className ?? ""}`}
         >
           {selected ? selected.label : placeholder ?? ""}
           <svg
@@ -66,7 +69,10 @@ export default function Select({
           </svg>
         </Listbox.Button>
 
-        <Listbox.Options className="absolute z-20 mt-1 max-h-60 w-full overflow-auto bg-plum-light border border-gold/20 shadow-lg outline-none">
+        {/* !bg-plum-light: globals.css repaints the plain .bg-plum-light class at
+            80% alpha for card surfaces, which leaves a floating menu see-through.
+            The important modifier restores the token's solid value. */}
+        <Listbox.Options className="absolute z-20 mt-1 max-h-60 w-full overflow-auto !bg-plum-light border border-gold/20 shadow-lg outline-none">
           {options.map((option) => (
             <Listbox.Option
               key={option.value}
