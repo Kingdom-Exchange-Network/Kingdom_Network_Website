@@ -142,15 +142,20 @@ src/
 
 | Token | Value |
 |---|---|
-| Background primary | `#0A0D1A` (deep navy) |
-| Background dark | `#070912` |
+| Background primary (plum) | `#0D0519` |
+| Background dark | `#080210` |
+| Background light | `#160B2B` |
+| Border | `#1F1040` |
 | Gold accent | `#D4AF5A` |
+| Gold light | `#E8C97A` |
+| Gold dark | `#B8942F` |
 | Text primary | `#F0EAD8` (warm white) |
 | Text muted | `#A09880` |
+| Text subtle | `#7A7060` |
 | Display font | Cormorant Garamond (serif) |
 | Body font | Jost (geometric sans) |
 
-Tailwind color aliases: `navy`, `navy-dark`, `navy-light`, `gold`, `gold-light`, `cream`, `tag-teal`, `tag-purple`, `tag-blue`.
+Tailwind color aliases: `plum`, `plum-dark`, `plum-light`, `plum-border`, `gold`, `gold-light`, `gold-dark`, `gold-muted`, `cream`, `cream-muted`, `cream-subtle`, `tag-teal`, `tag-purple`, `tag-blue`.
 
 Component classes defined in `globals.css`: `.btn-primary`, `.btn-outline`, `.section-label`, `.display-heading`.
 
