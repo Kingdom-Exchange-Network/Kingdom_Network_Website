@@ -22,12 +22,12 @@ export default function CrownLogo({ size = 32, className = "" }: CrownLogoProps)
         fill="currentColor"
       />
       {/* Center jewel */}
-      <circle cx="20" cy="13" r="2.5" fill="#0A0D1A" />
+      <circle cx="20" cy="13" r="2.5" fill="#0D0519" />
       {/* Side jewels */}
-      <circle cx="9" cy="19" r="1.5" fill="#0A0D1A" />
-      <circle cx="31" cy="19" r="1.5" fill="#0A0D1A" />
+      <circle cx="9" cy="19" r="1.5" fill="#0D0519" />
+      <circle cx="31" cy="19" r="1.5" fill="#0D0519" />
       {/* Bottom trim */}
-      <rect x="4" y="26.5" width="32" height="0.5" fill="#0A0D1A" opacity="0.3" />
+      <rect x="4" y="26.5" width="32" height="0.5" fill="#0D0519" opacity="0.3" />
     </svg>
   );
 }
