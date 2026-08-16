@@ -94,6 +94,7 @@ export default function HomePage() {
               <div className="min-w-[130px]">
                 <Select
                   ariaLabel="Organization type"
+                  className="!bg-plum border-0 sm:border-l border-t border-gold/20 py-3 cursor-pointer"
                   value={orgType}
                   onChange={setOrgType}
                   options={[
@@ -108,6 +109,7 @@ export default function HomePage() {
               <div className="min-w-[130px]">
                 <Select
                   ariaLabel="Region"
+                  className="!bg-plum border-0 sm:border-l border-t border-gold/20 py-3 cursor-pointer"
                   value={region}
                   onChange={setRegion}
                   options={[
@@ -127,6 +129,7 @@ export default function HomePage() {
               <div className="min-w-[130px]">
                 <Select
                   ariaLabel="Need type"
+                  className="!bg-plum border-0 sm:border-l border-t border-gold/20 py-3 cursor-pointer"
                   value={needType}
                   onChange={setNeedType}
                   options={[

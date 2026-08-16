@@ -29,6 +29,8 @@ type SelectProps = {
   placeholder?: string;
   id?: string;
   ariaLabel?: string;
+  /** Extra classes for the button, appended so callers can override the defaults. */
+  className?: string;
 };
 
 export default function Select({
@@ -38,6 +40,7 @@ export default function Select({
   placeholder,
   id,
   ariaLabel,
+  className,
 }: SelectProps) {
   const selected = options.find((o) => o.value === value);
 
@@ -47,7 +50,7 @@ export default function Select({
         <Listbox.Button
           id={id}
           aria-label={ariaLabel}
-          className="relative w-full bg-plum-light border border-gold/20 px-3 pr-8 py-2.5 font-body text-sm text-cream/70 text-left outline-none focus:border-gold/50 transition-colors"
+          className={`relative w-full bg-plum-light border border-gold/20 px-3 pr-8 py-2.5 font-body text-sm text-cream/70 text-left outline-none focus:border-gold/50 transition-colors ${className ?? ""}`}
         >
           {selected ? selected.label : placeholder ?? ""}
           <svg
