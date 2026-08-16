@@ -1,5 +1,9 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import {
+  OrganizationTypeSelect,
+  PrimaryRegionSelect,
+} from "@/components/ApplyFormSelects";
 import Link from "next/link";
 
 export default function ApplyPage() {
@@ -37,25 +41,7 @@ export default function ApplyPage() {
                   className="w-full bg-plum border border-gold/20 px-3 py-2.5 font-body text-sm text-cream placeholder:text-cream/30 outline-none focus:border-gold/50 transition-colors"
                 />
               </div>
-              <div>
-                <label htmlFor="apply-type" className="section-label block mb-2">
-                  Organization Type *
-                </label>
-                <div className="relative">
-                  <select id="apply-type" className="w-full appearance-none bg-plum border border-gold/20 px-3 pr-8 py-2.5 font-body text-sm text-cream/70 outline-none focus:border-gold/50 transition-colors">
-                    <option value="">Select type...</option>
-                    <option value="nonprofit">Nonprofit / 501(c)(3)</option>
-                    <option value="church">
-                      Church / Religious Organization
-                    </option>
-                    <option value="ministry">Ministry / Para-Church</option>
-                    <option value="forprofit">Kingdom-Minded Business</option>
-                  </select>
-                  <svg aria-hidden="true" className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gold/40" viewBox="0 0 20 20" fill="none">
-                    <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </div>
-              </div>
+              <OrganizationTypeSelect />
               <div>
                 <label className="section-label block mb-2">Website</label>
                 <input
@@ -74,30 +60,7 @@ export default function ApplyPage() {
                   className="w-full bg-plum border border-gold/20 px-3 py-2.5 font-body text-sm text-cream placeholder:text-cream/30 outline-none focus:border-gold/50 transition-colors"
                 />
               </div>
-              <div>
-                <label htmlFor="apply-region" className="section-label block mb-2">
-                  Primary Region *
-                </label>
-                <div className="relative">
-                  <select id="apply-region" className="w-full appearance-none bg-plum border border-gold/20 px-3 pr-8 py-2.5 font-body text-sm text-cream/70 outline-none focus:border-gold/50 transition-colors">
-                    <option value="">Select region...</option>
-                    <option>North America</option>
-                    <option>Latin America</option>
-                    <option>South America</option>
-                    <option>East Africa</option>
-                    <option>West Africa</option>
-                    <option>Southeast Asia</option>
-                    <option>South Asia</option>
-                    <option>Middle East</option>
-                    <option>Europe</option>
-                    <option>Australia</option>
-                    <option>Global</option>
-                  </select>
-                  <svg aria-hidden="true" className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gold/40" viewBox="0 0 20 20" fill="none">
-                    <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </div>
-              </div>
+              <PrimaryRegionSelect />
               <div>
                 <label className="section-label block mb-2">Country *</label>
                 <input
