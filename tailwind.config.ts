@@ -56,7 +56,7 @@ const config: Config = {
       },
       backgroundImage: {
         "hero-overlay":
-          "linear-gradient(180deg, rgba(10,13,26,0.6) 0%, rgba(10,13,26,0.97) 100%)",
+          "linear-gradient(180deg, rgba(13,5,25,0.6) 0%, rgba(13,5,25,0.97) 100%)",
       },
     },
   },
