@@ -36,7 +36,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${cormorant.variable} ${jost.variable}`}>
-      <body className="antialiased bg-navy text-cream font-body">
+      <body className="antialiased bg-plum text-cream font-body">
         {children}
       </body>
     </html>

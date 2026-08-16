@@ -4,8 +4,9 @@ import { useState, useMemo } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import OrgCard from "@/components/OrgCard";
+import Select from "@/components/Select";
 import { seedOrganizations } from "@/lib/seed-data";
-import { OrgCategory, OrgType } from "@/lib/types";
+import { OrgType, Mountain, MOUNTAINS } from "@/lib/types";
 
 const regionOptions = [
   "All Regions",
@@ -29,24 +30,17 @@ const typeOptions: { label: string; value: OrgType | "" }[] = [
   { label: "Business", value: "forprofit" },
 ];
 
-const categoryOptions: { label: string; value: OrgCategory | "" }[] = [
-  { label: "All Categories", value: "" },
-  { label: "Relief", value: "relief" },
-  { label: "Missions", value: "missions" },
-  { label: "Education", value: "education" },
-  { label: "Volunteers", value: "volunteers" },
-  { label: "Hiring", value: "hiring" },
-  { label: "Marketplace", value: "marketplace" },
-];
-
 export default function DirectoryPage() {
   const [search, setSearch] = useState("");
   const [region, setRegion] = useState("All Regions");
   const [type, setType] = useState<OrgType | "">("");
-  const [category, setCategory] = useState<OrgCategory | "">("");
+  const [mountain, setMountain] = useState<Mountain | "">("");
+  const [subcategory, setSubcategory] = useState<string>("");
   const [hiringOnly, setHiringOnly] = useState(false);
   const [volunteersOnly, setVolunteersOnly] = useState(false);
   const [verifiedOnly, setVerifiedOnly] = useState(false);
+
+  const activeMountain = MOUNTAINS.find((m) => m.slug === mountain);
 
   const filtered = useMemo(() => {
     return seedOrganizations.filter((org) => {
@@ -54,20 +48,21 @@ export default function DirectoryPage() {
           !org.shortDescription.toLowerCase().includes(search.toLowerCase())) return false;
       if (region !== "All Regions" && org.region !== region) return false;
       if (type && org.type !== type) return false;
-      if (category && !org.category.includes(category)) return false;
+      if (mountain && !org.mountains.includes(mountain)) return false;
+      if (subcategory && !org.subcategories.includes(subcategory)) return false;
       if (hiringOnly && !org.hiring) return false;
       if (volunteersOnly && !org.volunteersNeeded) return false;
       if (verifiedOnly && !org.verified) return false;
       return true;
     });
-  }, [search, region, type, category, hiringOnly, volunteersOnly, verifiedOnly]);
+  }, [search, region, type, mountain, subcategory, hiringOnly, volunteersOnly, verifiedOnly]);
 
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
 
       {/* Page header */}
-      <div className="bg-navy pt-28 pb-12 border-b border-gold/10">
+      <div className="bg-plum pt-28 pb-12 border-b border-gold/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="section-label mb-3">Kingdom Exchange</p>
           <h1 className="display-heading text-5xl mb-4">Organization Directory</h1>
@@ -78,7 +73,7 @@ export default function DirectoryPage() {
         </div>
       </div>
 
-      <div className="flex-1 bg-navy py-10">
+      <div className="flex-1 bg-plum py-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-8">
 
@@ -92,54 +87,68 @@ export default function DirectoryPage() {
                   placeholder="Name or keyword..."
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
-                  className="w-full bg-navy-light border border-gold/20 px-3 py-2.5 font-body text-sm text-cream placeholder:text-cream/30 outline-none focus:border-gold/50 transition-colors"
+                  className="w-full bg-plum-light border border-gold/20 px-3 py-2.5 font-body text-sm text-cream placeholder:text-cream/30 outline-none focus:border-gold/50 transition-colors"
                 />
               </div>
 
               {/* Region */}
               <div>
                 <label htmlFor="filter-region" className="section-label block mb-2">Region</label>
-                <select
+                <Select
                   id="filter-region"
+                  ariaLabel="Region"
                   value={region}
-                  onChange={(e) => setRegion(e.target.value)}
-                  className="w-full bg-navy-light border border-gold/20 px-3 py-2.5 font-body text-sm text-cream/70 outline-none focus:border-gold/50 transition-colors"
-                >
-                  {regionOptions.map((r) => (
-                    <option key={r} value={r}>{r}</option>
-                  ))}
-                </select>
+                  onChange={setRegion}
+                  options={regionOptions.map((r) => ({ value: r, label: r }))}
+                />
               </div>
 
               {/* Type */}
               <div>
                 <label htmlFor="filter-type" className="section-label block mb-2">Organization Type</label>
-                <select
+                <Select
                   id="filter-type"
+                  ariaLabel="Organization type"
                   value={type}
-                  onChange={(e) => setType(e.target.value as OrgType | "")}
-                  className="w-full bg-navy-light border border-gold/20 px-3 py-2.5 font-body text-sm text-cream/70 outline-none focus:border-gold/50 transition-colors"
-                >
-                  {typeOptions.map((t) => (
-                    <option key={t.value} value={t.value}>{t.label}</option>
-                  ))}
-                </select>
+                  onChange={(v) => setType(v as OrgType | "")}
+                  options={typeOptions}
+                />
               </div>
 
-              {/* Category */}
+              {/* Mountain */}
               <div>
-                <label htmlFor="filter-category" className="section-label block mb-2">Category</label>
-                <select
-                  id="filter-category"
-                  value={category}
-                  onChange={(e) => setCategory(e.target.value as OrgCategory | "")}
-                  className="w-full bg-navy-light border border-gold/20 px-3 py-2.5 font-body text-sm text-cream/70 outline-none focus:border-gold/50 transition-colors"
-                >
-                  {categoryOptions.map((c) => (
-                    <option key={c.value} value={c.value}>{c.label}</option>
-                  ))}
-                </select>
+                <label htmlFor="filter-mountain" className="section-label block mb-2">Category</label>
+                <Select
+                  id="filter-mountain"
+                  ariaLabel="Category"
+                  value={mountain}
+                  onChange={(v) => {
+                    setMountain(v as Mountain | "");
+                    setSubcategory("");
+                  }}
+                  options={[
+                    { value: "", label: "All Categories" },
+                    ...MOUNTAINS.map((m) => ({ value: m.slug, label: m.label })),
+                  ]}
+                />
               </div>
+
+              {/* Subcategory */}
+              {activeMountain && (
+                <div>
+                  <label htmlFor="filter-subcategory" className="section-label block mb-2">Subcategory</label>
+                  <Select
+                    id="filter-subcategory"
+                    ariaLabel="Subcategory"
+                    value={subcategory}
+                    onChange={setSubcategory}
+                    options={[
+                      { value: "", label: "All Subcategories" },
+                      ...activeMountain.subcategories.map((s) => ({ value: s.slug, label: s.label })),
+                    ]}
+                  />
+                </div>
+              )}
 
               {/* Checkboxes */}
               <div>
@@ -163,7 +172,7 @@ export default function DirectoryPage() {
                         onClick={() => set(!value)}
                       >
                         {value && (
-                          <svg className="w-2.5 h-2.5 text-navy" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <svg className="w-2.5 h-2.5 text-plum" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                           </svg>
                         )}
@@ -183,7 +192,7 @@ export default function DirectoryPage() {
               <button
                 type="button"
                 onClick={() => {
-                  setSearch(""); setRegion("All Regions"); setType(""); setCategory("");
+                  setSearch(""); setRegion("All Regions"); setType(""); setMountain(""); setSubcategory("");
                   setHiringOnly(false); setVolunteersOnly(false); setVerifiedOnly(false);
                 }}
                 className="font-body text-xs text-cream/30 hover:text-gold/60 transition-colors"
@@ -214,7 +223,7 @@ export default function DirectoryPage() {
                     <button
                       type="button"
                       onClick={() => {
-                        setSearch(""); setRegion("All Regions"); setType(""); setCategory("");
+                        setSearch(""); setRegion("All Regions"); setType(""); setMountain(""); setSubcategory("");
                         setHiringOnly(false); setVolunteersOnly(false); setVerifiedOnly(false);
                       }}
                       className="text-gold/50 hover:text-gold transition-colors"

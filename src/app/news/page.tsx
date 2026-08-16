@@ -22,7 +22,7 @@ export default function NewsPage() {
       <Header />
 
       {/* Page header */}
-      <div className="bg-navy pt-28 pb-12 border-b border-gold/10">
+      <div className="bg-plum pt-28 pb-12 border-b border-gold/10">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="section-label mb-3">Kingdom Exchange</p>
           <h1 className="display-heading text-5xl mb-4">News & Events</h1>
@@ -34,7 +34,7 @@ export default function NewsPage() {
       </div>
 
       {/* Content */}
-      <div className="flex-1 bg-navy py-12">
+      <div className="flex-1 bg-plum py-12">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-3">
             {sorted.map((item) => {
@@ -47,7 +47,7 @@ export default function NewsPage() {
               return (
                 <div
                   key={item.id}
-                  className="bg-navy-light border border-gold/10 hover:border-gold/25 transition-colors p-6 flex flex-col sm:flex-row gap-5"
+                  className="bg-plum-light border border-gold/10 hover:border-gold/25 transition-colors p-6 flex flex-col sm:flex-row gap-5"
                 >
                   {/* Date column */}
                   <div className="sm:w-40 shrink-0">
@@ -93,7 +93,7 @@ export default function NewsPage() {
           </div>
 
           {/* Newsletter CTA */}
-          <div className="mt-16 bg-navy-light border border-gold/15 p-8 text-center">
+          <div className="mt-16 bg-plum-light border border-gold/15 p-8 text-center">
             <p className="section-label mb-3">Stay Connected</p>
             <h2 className="display-heading text-3xl mb-4">Get Network Updates</h2>
             <p className="font-body text-sm text-cream/50 max-w-md mx-auto mb-6 leading-relaxed">
@@ -104,7 +104,7 @@ export default function NewsPage() {
               <input
                 type="email"
                 placeholder="Your email address"
-                className="flex-1 bg-navy border border-gold/20 px-4 py-2.5 font-body text-sm text-cream placeholder:text-cream/30 outline-none focus:border-gold/50 transition-colors"
+                className="flex-1 bg-plum border border-gold/20 px-4 py-2.5 font-body text-sm text-cream placeholder:text-cream/30 outline-none focus:border-gold/50 transition-colors"
               />
               <button className="btn-primary whitespace-nowrap">
                 Subscribe

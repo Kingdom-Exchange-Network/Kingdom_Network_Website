@@ -12,7 +12,7 @@ export default function DonatePage() {
       <Header />
 
       {/* Hero */}
-      <div className="bg-navy pt-28 pb-16 border-b border-gold/10">
+      <div className="bg-plum pt-28 pb-16 border-b border-gold/10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="flex justify-center mb-6">
             <span className="text-gold"><CrownLogo size={28} /></span>
@@ -27,7 +27,7 @@ export default function DonatePage() {
       </div>
 
       {/* How giving works */}
-      <section className="bg-navy py-16 border-b border-gold/10">
+      <section className="bg-plum py-16 border-b border-gold/10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <p className="section-label mb-3">Transparency</p>
@@ -64,7 +64,7 @@ export default function DonatePage() {
                 body: "Organizations that use KMAN's donation flow are powered by Stripe — industry-standard payment security.",
               },
             ].map((item) => (
-              <div key={item.title} className="bg-navy p-8 flex flex-col items-center text-center gap-4">
+              <div key={item.title} className="bg-plum p-8 flex flex-col items-center text-center gap-4">
                 <div className="w-12 h-12 border border-gold/25 flex items-center justify-center text-gold">
                   {item.icon}
                 </div>
@@ -77,7 +77,7 @@ export default function DonatePage() {
       </section>
 
       {/* Support KMAN */}
-      <section className="bg-navy-light py-16 border-b border-gold/10">
+      <section className="bg-plum-light py-16 border-b border-gold/10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
             <div>
@@ -103,7 +103,7 @@ export default function DonatePage() {
               </a>
             </div>
 
-            <div className="bg-navy border border-gold/15 p-6 space-y-4">
+            <div className="bg-plum border border-gold/15 p-6 space-y-4">
               <h3 className="section-label">Suggested Giving Levels</h3>
               {[
                 { amount: "$10 / mo", label: "Sustainer", desc: "Covers monthly hosting costs" },
@@ -128,7 +128,7 @@ export default function DonatePage() {
       </section>
 
       {/* Give to Organizations */}
-      <section className="bg-navy py-16">
+      <section className="bg-plum py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <p className="section-label mb-3">Partner Organizations</p>
@@ -139,10 +139,10 @@ export default function DonatePage() {
             {donorOrgs.map((org) => (
               <div
                 key={org.id}
-                className="bg-navy-light border border-gold/10 hover:border-gold/25 transition-colors p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
+                className="bg-plum-light border border-gold/10 hover:border-gold/25 transition-colors p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 bg-navy border border-gold/20 flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 bg-plum border border-gold/20 flex items-center justify-center shrink-0">
                     <span className="font-display text-lg text-gold/70">{org.name.charAt(0)}</span>
                   </div>
                   <div>
