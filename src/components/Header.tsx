@@ -8,7 +8,7 @@ import CrownLogo from "./CrownLogo";
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/directory", label: "Directory" },
-  { href: "/missions", label: "Missions" },
+  { href: "/missions", label: "Featured Missions" },
   { href: "/news", label: "News & Events" },
   { href: "/prayer", label: "Prayer" },
   { href: "/about", label: "About" },
