@@ -51,9 +51,11 @@ export default function HomePage() {
       <Header />
 
       {/* ── HERO ───────────────────────────────────────────────────── */}
-      <section className="relative flex items-center min-h-screen bg-plum pt-16 overflow-hidden">
-        {/* Background radial glow */}
-        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+      <section className="relative flex items-center min-h-screen bg-plum pt-16">
+        {/* Background radial glow — overflow-hidden lives here, not on the
+            section, so the glow stays contained without clipping the dropdown
+            menus that float past the section's bottom edge. */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full bg-gold/5 blur-[120px]" />
           <div className="absolute inset-0 opacity-[0.03] hero-grid-overlay" />
         </div>

@@ -69,7 +69,10 @@ export default function Select({
           </svg>
         </Listbox.Button>
 
-        <Listbox.Options className="absolute z-20 mt-1 max-h-60 w-full overflow-auto bg-plum-light border border-gold/20 shadow-lg outline-none">
+        {/* !bg-plum-light: globals.css repaints the plain .bg-plum-light class at
+            80% alpha for card surfaces, which leaves a floating menu see-through.
+            The important modifier restores the token's solid value. */}
+        <Listbox.Options className="absolute z-20 mt-1 max-h-60 w-full overflow-auto !bg-plum-light border border-gold/20 shadow-lg outline-none">
           {options.map((option) => (
             <Listbox.Option
               key={option.value}
