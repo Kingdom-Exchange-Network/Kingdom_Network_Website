@@ -1,8 +1,12 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import OrgCard from "@/components/OrgCard";
 import CrownLogo from "@/components/CrownLogo";
+import Select from "@/components/Select";
 import { seedOrganizations, featuredMissions } from "@/lib/seed-data";
 
 const pillars = [
@@ -37,6 +41,10 @@ const pillars = [
 
 export default function HomePage() {
   const featuredOrgs = seedOrganizations.filter((o) => o.verified).slice(0, 3);
+
+  const [orgType, setOrgType] = useState("");
+  const [region, setRegion] = useState("");
+  const [needType, setNeedType] = useState("");
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -83,46 +91,52 @@ export default function HomePage() {
                 placeholder="Search organizations, regions, needs..."
                 className="flex-1 bg-transparent px-4 py-3 font-body text-sm text-cream placeholder:text-cream/30 outline-none"
               />
-              <div className="relative min-w-[130px]">
-                <select aria-label="Organization type" className="w-full appearance-none bg-plum border-0 sm:border-l border-t border-gold/20 px-4 pr-8 py-3 font-body text-sm text-cream/70 outline-none cursor-pointer">
-                  <option value="">All Types</option>
-                  <option value="nonprofit">Nonprofit</option>
-                  <option value="church">Church</option>
-                  <option value="ministry">Ministry</option>
-                  <option value="forprofit">Business</option>
-                </select>
-                <svg aria-hidden="true" className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gold/40" viewBox="0 0 20 20" fill="none">
-                  <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+              <div className="min-w-[130px]">
+                <Select
+                  ariaLabel="Organization type"
+                  value={orgType}
+                  onChange={setOrgType}
+                  options={[
+                    { value: "", label: "All Types" },
+                    { value: "nonprofit", label: "Nonprofit" },
+                    { value: "church", label: "Church" },
+                    { value: "ministry", label: "Ministry" },
+                    { value: "forprofit", label: "Business" },
+                  ]}
+                />
               </div>
-              <div className="relative min-w-[130px]">
-                <select aria-label="Region" className="w-full appearance-none bg-plum border-0 sm:border-l border-t border-gold/20 px-4 pr-8 py-3 font-body text-sm text-cream/70 outline-none cursor-pointer">
-                  <option value="">All Regions</option>
-                  <option value="north-america">North America</option>
-                  <option value="latin-america">Latin America</option>
-                  <option value="south-america">South America</option>
-                  <option value="africa">Africa</option>
-                  <option value="asia">Asia</option>
-                  <option value="australia">Australia</option>
-                  <option value="europe">Europe</option>
-                  <option value="middle-east">Middle East</option>
-                  <option value="global">Global</option>
-                </select>
-                <svg aria-hidden="true" className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gold/40" viewBox="0 0 20 20" fill="none">
-                  <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+              <div className="min-w-[130px]">
+                <Select
+                  ariaLabel="Region"
+                  value={region}
+                  onChange={setRegion}
+                  options={[
+                    { value: "", label: "All Regions" },
+                    { value: "north-america", label: "North America" },
+                    { value: "latin-america", label: "Latin America" },
+                    { value: "south-america", label: "South America" },
+                    { value: "africa", label: "Africa" },
+                    { value: "asia", label: "Asia" },
+                    { value: "australia", label: "Australia" },
+                    { value: "europe", label: "Europe" },
+                    { value: "middle-east", label: "Middle East" },
+                    { value: "global", label: "Global" },
+                  ]}
+                />
               </div>
-              <div className="relative min-w-[130px]">
-                <select aria-label="Need type" className="w-full appearance-none bg-plum border-0 sm:border-l border-t border-gold/20 px-4 pr-8 py-3 font-body text-sm text-cream/70 outline-none cursor-pointer">
-                  <option value="">All Needs</option>
-                  <option value="resource coordination">Resource Coordination</option>
-                  <option value="hiring">Hiring</option>
-                  <option value="volunteers">Volunteers</option>
-                  <option value="donors">Donors</option>
-                </select>
-                <svg aria-hidden="true" className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gold/40" viewBox="0 0 20 20" fill="none">
-                  <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+              <div className="min-w-[130px]">
+                <Select
+                  ariaLabel="Need type"
+                  value={needType}
+                  onChange={setNeedType}
+                  options={[
+                    { value: "", label: "All Needs" },
+                    { value: "resource coordination", label: "Resource Coordination" },
+                    { value: "hiring", label: "Hiring" },
+                    { value: "volunteers", label: "Volunteers" },
+                    { value: "donors", label: "Donors" },
+                  ]}
+                />
               </div>
               <Link
                 href="/directory"
