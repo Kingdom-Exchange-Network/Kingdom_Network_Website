@@ -12,7 +12,7 @@ const navLinks = [
   { href: "/news", label: "News & Events" },
   { href: "/prayer", label: "Prayer" },
   { href: "/about", label: "About" },
-  { href: "/connect", label: "Connect with the Community" },
+  { href: "/connect", label: "Connect with Us" },
   { href: "/donate", label: "Donate" },
 ];
 
