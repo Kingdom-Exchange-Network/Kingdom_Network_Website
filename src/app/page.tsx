@@ -156,6 +156,9 @@ export default function HomePage() {
                 List yours free
               </Link>
             </p>
+            <p className="font-body text-xs text-cream/30 mt-3">
+              AI-Free Zone · Referral-Only Private Network
+            </p>
           </div>
         </div>
 
