@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { seedOrganizations, featuredMissions } from "@/lib/seed-data";
+import { seedOrganizations } from "@/lib/seed-data";
 
 const BASE_URL = "https://kingdomexchangenetwork.org";
 
@@ -22,12 +22,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  const missionRoutes: MetadataRoute.Sitemap = featuredMissions.map((m) => ({
-    url: `${BASE_URL}/missions/${m.id}`,
-    lastModified: new Date(m.publishedAt),
-    changeFrequency: "monthly",
-    priority: 0.7,
-  }));
-
-  return [...staticRoutes, ...orgRoutes, ...missionRoutes];
+  return [...staticRoutes, ...orgRoutes];
 }

@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 import OrgCard from "@/components/OrgCard";
 import CrownLogo from "@/components/CrownLogo";
 import Select from "@/components/Select";
-import { seedOrganizations, featuredMissions } from "@/lib/seed-data";
+import { seedOrganizations } from "@/lib/seed-data";
 
 const pillars = [
   {
@@ -215,45 +215,6 @@ export default function HomePage() {
             <Link href="/directory" className="btn-outline">
               View All Organizations
             </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ── FEATURED MISSIONS ──────────────────────────────────────── */}
-      <section className="bg-plum-light border-t border-gold/10 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-end justify-between mb-10">
-            <div>
-              <p className="section-label mb-2">Stories</p>
-              <h2 className="display-heading text-4xl">Featured Missions</h2>
-            </div>
-            <Link href="/missions" className="btn-outline hidden sm:inline-block">
-              All Stories
-            </Link>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {featuredMissions.map((mission) => (
-              <Link
-                key={mission.id}
-                href={`/missions/${mission.id}`}
-                className="group block bg-plum border border-gold/10 hover:border-gold/30 transition-all duration-300 p-6"
-              >
-                <div className="flex items-center gap-2 mb-4">
-                  <span className="section-label text-[10px]">{mission.region}</span>
-                  <span className="text-cream/20">·</span>
-                  <span className="font-body text-[10px] text-cream/40">
-                    {mission.readingTime} min read
-                  </span>
-                </div>
-                <h3 className="font-display text-xl text-cream group-hover:text-gold transition-colors duration-200 leading-snug mb-3">
-                  {mission.title}
-                </h3>
-                <p className="font-body text-sm text-cream/50 leading-relaxed line-clamp-3 mb-4">
-                  {mission.excerpt}
-                </p>
-                <p className="font-body text-xs text-gold/60">{mission.orgName}</p>
-              </Link>
-            ))}
           </div>
         </div>
       </section>
