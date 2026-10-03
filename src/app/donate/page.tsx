@@ -4,6 +4,10 @@ import Link from "next/link";
 import { seedOrganizations } from "@/lib/seed-data";
 import CrownLogo from "@/components/CrownLogo";
 
+// Hidden until the nonprofit is set up and Stripe is connected.
+// Set to true (and replace the placeholder link) to show the button again.
+const STRIPE_DONATIONS_ENABLED = false;
+
 export default function DonatePage() {
   const donorOrgs = seedOrganizations.filter((o) => o.seekingDonors);
 
@@ -93,14 +97,16 @@ export default function DonatePage() {
               <p className="font-body text-cream/60 leading-relaxed mb-6">
                 Every gift keeps the directory free for the organizations that need it most.
               </p>
-              <a
-                href="https://donate.stripe.com/placeholder"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary inline-block"
-              >
-                Give to KMAN via Stripe
-              </a>
+              {STRIPE_DONATIONS_ENABLED && (
+                <a
+                  href="https://donate.stripe.com/placeholder"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary inline-block"
+                >
+                  Give to KMAN via Stripe
+                </a>
+              )}
             </div>
 
             <div className="bg-plum border border-gold/15 p-6 space-y-4">
