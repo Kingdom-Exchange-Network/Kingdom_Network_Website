@@ -1,7 +1,9 @@
 import { MetadataRoute } from "next";
 import { seedOrganizations, featuredMissions } from "@/lib/seed-data";
 
-const BASE_URL = "https://kingdomexchangenetwork.org";
+const BASE_URL = (
+  process.env.NEXT_PUBLIC_SITE_URL || "https://kingdomexchangenetwork.com"
+).replace(/\/+$/, "");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
