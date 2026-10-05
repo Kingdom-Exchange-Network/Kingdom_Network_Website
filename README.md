@@ -127,14 +127,21 @@ src/
 │   ├── Footer.tsx          # Sticky footer
 │   ├── Header.tsx          # Responsive nav header
 │   └── OrgCard.tsx         # Directory card component
-├── db/
-│   └── better-auth-schema.sql  # Better Auth database schema
 └── lib/
     ├── auth.ts             # Better Auth server config (email/password + Google OAuth)
     ├── auth-client.ts      # Better Auth React client
     ├── seed-data.ts        # Static seed data (orgs, missions, news, prayer)
     └── types.ts            # TypeScript types
 ```
+
+### Database migrations
+
+SQL migrations live in `supabase/migrations/` and are run by hand, in order, in the Supabase SQL Editor. Run each file once. `0002_prayer.sql` is not idempotent (`CREATE POLICY` fails on a second run).
+
+| File | Creates |
+|---|---|
+| `0001_better_auth.sql` | Better Auth tables (user, session, account, verification) |
+| `0002_prayer.sql` | Prayer Wall tables, RLS policies, anon grants, `increment_prayer_count` RPC |
 
 ---
 
