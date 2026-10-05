@@ -3,6 +3,14 @@ import Footer from "@/components/Footer";
 import Link from "next/link";
 import { seedOrganizations } from "@/lib/seed-data";
 import CrownLogo from "@/components/CrownLogo";
+import ComingSoonButton from "@/components/ComingSoonButton";
+
+// KMAN Stripe giving is off until the nonprofit is set up and Stripe is connected.
+// While false, the "Give to KMAN via Stripe" button goes nowhere and shows a
+// "coming soon" message when clicked, and the hero shows a "(coming soon)" note.
+// Set to true (and replace the placeholder link) to make the button link to Stripe
+// and remove the note.
+const STRIPE_DONATIONS_ENABLED = false;
 
 export default function DonatePage() {
   const donorOrgs = seedOrganizations.filter((o) => o.seekingDonors);
@@ -21,7 +29,7 @@ export default function DonatePage() {
           <h1 className="display-heading text-5xl sm:text-6xl mb-6">Support the Mission</h1>
           <p className="font-body text-lg text-cream/60 leading-relaxed max-w-xl mx-auto">
             Your generosity fuels kingdom work around the world. Give directly to organizations
-            doing the work, or support KMAN&apos;s mission to keep this directory free and growing.
+            doing the work, or support KMAN&apos;s mission to keep this directory free and growing{!STRIPE_DONATIONS_ENABLED && " (coming soon)"}.
           </p>
         </div>
       </div>
@@ -93,14 +101,13 @@ export default function DonatePage() {
               <p className="font-body text-cream/60 leading-relaxed mb-6">
                 Every gift keeps the directory free for the organizations that need it most.
               </p>
-              <a
+              <ComingSoonButton
+                enabled={STRIPE_DONATIONS_ENABLED}
                 href="https://donate.stripe.com/placeholder"
-                target="_blank"
-                rel="noopener noreferrer"
                 className="btn-primary inline-block"
               >
                 Give to KMAN via Stripe
-              </a>
+              </ComingSoonButton>
             </div>
 
             <div className="bg-plum border border-gold/15 p-6 space-y-4">

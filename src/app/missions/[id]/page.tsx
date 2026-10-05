@@ -5,6 +5,10 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { featuredMissions, seedOrganizations } from "@/lib/seed-data";
 
+// Shows the Give Now button (links to /donate) in the org callout for orgs seeking donors.
+// Set to false to hide it.
+const DONATIONS_ENABLED = true;
+
 interface Props {
   params: { id: string };
 }
@@ -126,7 +130,7 @@ export default function MissionArticlePage({ params }: Props) {
                   <Link href={`/directory/${org.id}`} className="btn-primary text-xs px-5 py-2">
                     View Profile
                   </Link>
-                  {org.seekingDonors && (
+                  {DONATIONS_ENABLED && org.seekingDonors && (
                     <Link href="/donate" className="btn-outline text-xs px-5 py-2">
                       Give Now
                     </Link>

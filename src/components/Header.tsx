@@ -16,6 +16,14 @@ const navLinks = [
   { href: "/donate", label: "Donate" },
 ];
 
+// Controls the Donate button in the nav. It is shown because visitors can give
+// directly to listed organizations. Set to false to hide it (styling is kept below).
+const DONATIONS_ENABLED = true;
+
+const visibleNavLinks = navLinks.filter(
+  (link) => DONATIONS_ENABLED || link.href !== "/donate"
+);
+
 export default function Header() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -41,7 +49,7 @@ export default function Header() {
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => (
+            {visibleNavLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -83,7 +91,7 @@ export default function Header() {
       {menuOpen && (
         <div className="md:hidden bg-plum-light border-t border-gold-thin px-4 py-4">
           <nav className="flex flex-col gap-1">
-            {navLinks.map((link) => (
+            {visibleNavLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
