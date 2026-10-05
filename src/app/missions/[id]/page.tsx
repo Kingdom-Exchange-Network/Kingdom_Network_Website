@@ -5,6 +5,10 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { featuredMissions, seedOrganizations } from "@/lib/seed-data";
 
+// Give Now is hidden until the nonprofit is set up and Stripe is connected.
+// Set to true to show the Give Now button in the org callout again (the link is kept below).
+const DONATIONS_ENABLED = false;
+
 interface Props {
   params: { id: string };
 }
@@ -126,7 +130,7 @@ export default function MissionArticlePage({ params }: Props) {
                   <Link href={`/directory/${org.id}`} className="btn-primary text-xs px-5 py-2">
                     View Profile
                   </Link>
-                  {org.seekingDonors && (
+                  {DONATIONS_ENABLED && org.seekingDonors && (
                     <Link href="/donate" className="btn-outline text-xs px-5 py-2">
                       Give Now
                     </Link>
