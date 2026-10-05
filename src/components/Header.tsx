@@ -16,9 +16,9 @@ const navLinks = [
   { href: "/donate", label: "Donate" },
 ];
 
-// Donate is hidden until the nonprofit is set up and Stripe is connected.
-// Set to true to show the Donate button in the nav again (styling is kept below).
-const DONATIONS_ENABLED = false;
+// Controls the Donate button in the nav. It is shown because visitors can give
+// directly to listed organizations. Set to false to hide it (styling is kept below).
+const DONATIONS_ENABLED = true;
 
 const visibleNavLinks = navLinks.filter(
   (link) => DONATIONS_ENABLED || link.href !== "/donate"

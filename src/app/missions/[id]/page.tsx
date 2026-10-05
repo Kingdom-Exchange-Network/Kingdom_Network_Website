@@ -5,9 +5,9 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { featuredMissions, seedOrganizations } from "@/lib/seed-data";
 
-// Give Now is hidden until the nonprofit is set up and Stripe is connected.
-// Set to true to show the Give Now button in the org callout again (the link is kept below).
-const DONATIONS_ENABLED = false;
+// Shows the Give Now button (links to /donate) in the org callout for orgs seeking donors.
+// Set to false to hide it.
+const DONATIONS_ENABLED = true;
 
 interface Props {
   params: { id: string };

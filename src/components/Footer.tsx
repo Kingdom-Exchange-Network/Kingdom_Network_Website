@@ -1,9 +1,9 @@
 import Link from "next/link";
 import CrownLogo from "./CrownLogo";
 
-// Give is hidden until the nonprofit is set up and Stripe is connected.
-// Set to true to show the Give link in the footer again (the entry is kept below).
-const DONATIONS_ENABLED = false;
+// Controls the Give link in the footer. It is shown because visitors can give
+// directly to listed organizations. Set to false to hide it (the entry is kept below).
+const DONATIONS_ENABLED = true;
 
 export default function Footer() {
   const year = new Date().getFullYear();
