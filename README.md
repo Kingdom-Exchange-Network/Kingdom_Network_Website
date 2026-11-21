@@ -175,7 +175,7 @@ Component classes defined in `globals.css`: `.btn-primary`, `.btn-outline`, `.se
 | Phase 1 — MVP | In Progress | Design system, Better Auth, core pages, directory, apply form, SEO, soft launch |
 | Phase 2 — Community Features | Planned | Sanity CMS, missions blog, prayer requests, news & events, newsletter |
 | Phase 3 — Member Portal & Monetization | Planned | Member dashboard, org claiming, Stripe subscriptions, accountability check-ins |
-| Phase 4 — Growth | Planned | AI matching, mobile app, marketplace, multilingual support, GHL evaluation |
+| Phase 4 — Growth | Planned | Mobile app, marketplace, multilingual support, GHL evaluation |
 
 ### Phase 1 — MVP (In Progress)
 
@@ -215,7 +215,6 @@ Component classes defined in `globals.css`: `.btn-primary`, `.btn-outline`, `.se
 - Mentor / Discipleship tab
 - Resource & Donation Exchange tab
 - Online Presence hub tab
-- AI-powered matching engine
 - Impact reporting dashboard
 - Kingdom Marketplace
 - Multilingual support (Spanish first)
