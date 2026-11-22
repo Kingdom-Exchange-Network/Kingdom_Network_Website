@@ -170,56 +170,7 @@ Component classes defined in `globals.css`: `.btn-primary`, `.btn-outline`, `.se
 
 ## Development Phases
 
-| Phase | Status | Focus |
-|---|---|---|
-| Phase 1 — MVP | In Progress | Design system, Better Auth, core pages, directory, apply form, SEO, soft launch |
-| Phase 2 — Community Features | Planned | Sanity CMS, missions blog, prayer requests, news & events, newsletter |
-| Phase 3 — Member Portal & Monetization | Planned | Member dashboard, org claiming, Stripe subscriptions, accountability check-ins |
-| Phase 4 — Growth | Planned | Mobile app, marketplace, multilingual support, GHL evaluation |
-
-### Phase 1 — MVP (In Progress)
-
-- Design system + component library ✅
-- Better Auth setup (email/password + Google OAuth) ✅
-- Home page ✅
-- About / Mission page ✅
-- Organization profile page ✅
-- Donate page ✅
-- Sticky footer ✅
-- Directory page with 7 Mountains filters + subcategories
-- Listing application form + admin approval workflow
-- Mobile responsive pass
-- Basic SEO (meta, OG images, sitemap)
-- Soft launch to founding KMAN members
-
-### Phase 2 — Community Features
-
-- Sanity CMS integration
-- Featured Missions blog
-- Prayer requests page (submit, display, updates, prayer count) ✅ — currently open + auto-approve; planned move behind free member sign-in wall (see Phase 3)
-- News & Events section
-- Newsletter signup + Mailchimp integration
-
-### Phase 3 — Member Portal & Monetization
-
-> Better Auth backend is already complete (Phase 1); only the sign-in / session UI remains.
-
-- Free member tier + sign-in wall for prayer request submission (identity auto-fills from profile; anonymous option hides name)
-- Member dashboard scaffold
-- Organization claiming / self-service profile editing
-- Stripe subscription setup + premium listing tiers
-- Accountability check-in feature
-
-### Phase 4 — Growth (Ongoing)
-
-- Mentor / Discipleship tab
-- Resource & Donation Exchange tab
-- Online Presence hub tab
-- Impact reporting dashboard
-- Kingdom Marketplace
-- Multilingual support (Spanish first)
-- Mobile app (React Native)
-- Evaluate GHL for CRM + email + SMS consolidation
+The build plan and progress checklist are maintained privately by the project team and are not tracked in this repository.
 
 ---
 
